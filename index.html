@@ -1,564 +1,70 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Sauvegardes de fangame Pokémon</title>
-		
-		<style>
-			#teams { margin: auto; }
-			#teams th { background-color: black; color : white; }
-			table#teams, table#teams tr, table#teams th, table#teams td { border: 1px black solid; border-collapse: collapse; text-align: center;}
-			
-			#cnt { margin: auto; border: 1px black solid; text-align: center;}
-
-
-			table#ListOfSaveFiles, table#ListOfSaveFiles tr {
-				text-align: center;
-				border: 1px black solid;
-				border-collapse: collapse;
-			}
-		</style>
+		<link href="style.css" rel="stylesheet">
 	</head>
 	<body>
-		<h1>Pokemon Fan Games played by SquonK</h1>
+		<div id="main">
+			<h1>Pokémon Fan Games played by SquonK</h1>
 
-		<h2>Criteria for a playable fan game</h2>
+			<h2>Criteria for a playable fan game</h2>
 
-		<p>My main criteria to play a game are the following:</p>
-		<ul>
-			<li>Editable: I won't play if I can't apply some QOL changes (visible Hidden Items, every Pokemon have the pickup ability, remap keys, Gen 6 Share Exp...)</li>
-			<li>Gen 3 battle layout: Other battle layouts are too slow</li>
-			<li>Speedup feature: Pokemon games are slow so the speed up feature is vital. Note that if the game is editable, I can add myself the speedup feature.</li>
-			<li>Finished and/or with enough accessible content: I won't play 1 hour long demo</li>
-			<li>A regular Pokemon game: So not Mystery Dungeon, not a game that uses the Pokemon universe to propose a different type of game</li>
-		</ul>
+			<p>My main criteria to play a game are the following:</p>
+			<ul>
+				<li>Editable: I won't play if I can't apply some QOL changes (visible Hidden Items, every Pokemon have the pickup ability, remap keys, Gen 6 Share Exp...)</li>
+				<li>Gen 3 battle layout: Other battle layouts are too slow</li>
+				<li>Speedup feature: Pokemon games are slow so the speed up feature is vital. Note that if the game is editable, I can add myself the speedup feature.</li>
+				<li>Finished and/or with enough accessible content: I won't play 1 hour long demo</li>
+				<li>A regular Pokemon game: So not Mystery Dungeon, not a game that uses the Pokemon universe to propose a different type of game</li>
+			</ul>
 
-		<p>It's also better if you let me play quickly. Exposure before the first fight of the game is useless because until I can pick a Pokemon and see a
-			battle, I'm not sure that I will keep playing.</p>
-	
-		<h2>Saves hub</h2>
-
-		<table id="ListOfSaveFiles">
-			<tr>
-				<th>Game</th>
-				<th>Version</th>
-				<th>Date</th>
-				<th>Player</th>
-				<th>Save file</th>
-				<th>Comments</th>
-			</tr>
-		</table>
-
-		<script>
-			// Save Files
-			const games = [
-				{
-					game: "Reborn",
-					version: "V18.1",
-					date: "2019-09/10",
-					player: "Anna",
-					path: "Reborn_Anna.rxdata",
-					living_dex: "Available"
-				},
-				{
-					game: "Reborn",
-					version: "V18.1",
-					date: "2019-12",
-					player: "Agathe",
-					path: "Reborn_Agathe.rxdata",
-					living_dex: "Shared"
-				},
-				{
-					game: "Insurgence",
-					version: "1.2.7",
-					date: "2020-07",
-					player: "Anna",
-					path: "Insurgence.rxdata",
-					comments: "https://gist.github.com/SPSquonK/584e3208451fd4ae5e887641e0fd35aa#file-pokemoninsurgence-md",
-					living_dex: "Full"
-				},
-				{
-					game: "Rejuvenation",
-					version: "V12",
-					date: "2020-07",
-					player: "Anna",
-					path: "Rejuvenation_Anna.rxdata",
-					comments: "https://gist.github.com/SPSquonK/2a010fd6448cf80c72df3e838b34cde3#file-pokemonrejuvenation-md",
-					living_dex: "Available - Magby+"
-				},
-				{
-					game: "Rejuvenation",
-					version: "V12",
-					date: "2020-08",
-					player: "Lillia",
-					path: "Rejuvenation_Lillia.rxdata",
-					living_dex: "Shared"
-				},
-				{
-					game: "Shield",
-					version: "",
-					date: "2020-09",
-					player: "",
-					save_file: "",
-					comments: "https://gist.github.com/SPSquonK/8935b20656865207f6860f25e31fb5d8",
-					living_dex: "New Pokemon - No Zacian but 2 Zamazenta"
-				},
-				{
-					game: "Empyrean",
-					version: "V1.0.0",
-					date: "2020-09",
-					player: "Anna",
-					comment: "Lost my save because it was not stored in the Saved Games folder",
-					save_file: "RIP",
-					comments_d: {
-						"Small Comments": "https://gist.github.com/SPSquonK/67de420974560efa8062c410704bc9a8"
-					},
-					living_dex: "Catchable"
-				},
-				{
-					game: "Empyrean",
-					version: "V1.0.1",
-					date: "2020-09",
-					player: "Océane",
-					path: "Empyrean_Oceane.rxdata",
-					comments_d: {
-						"Rainbow Notes": "https://gist.github.com/SPSquonK/85b204466680ca6d48e30c05442f0096"
-					},
-					living_dex: "No"
-				},
-				{
-					game: "Infinite Fusion",
-					version: "V4.8",
-					date: "2020-10",
-					player: "J'ai Six Cas",
-					path: "InfiniteFusion_Jessica.rxdata",
-					comments: "https://gist.github.com/SPSquonK/d769ca9cd6b5e611a3ae1d4631c12aca#file-infinitefusion-md",
-					living_dex: "No"
-				},
-				{
-					game: "Soulstone",
-					version: "V1.0.17",
-					date: "2021-01",
-					player: "Agathe",
-					path: "Soulstone_Agathe.rxdata",
-					comments: "https://gist.github.com/SPSquonK/797d222a45987a13a2e63e087a8ca849#file-pokemonsoulstone-md",
-					living_dex: "Available - mutually exclusives"
-				},
-				{
-					game: "Zero",
-					version: "V0.10.2",
-					date: "2021-01",
-					player: "Anna",
-					path: "Zero_Anna.rxdata",
-					comments: "https://gist.github.com/SPSquonK/6f21c3e30dd3a884becff5f4f3d90f34#file-pokemonzero-md",
-					living_dex: "Available"
-				},
-				{
-					game: "Blue And White",
-					version: "",
-					date: "2021-02",
-					player: "Marion",
-					path: "BlueWhite_Marion.rxdata",
-					living_dex: "Full"
-				},
-				{
-					game: "The Camry Legend 2",
-					version: "V1.2",
-					date: "2021-02",
-					player: "Anna",
-					path: "CamryLegend2.rxdata",
-					comments_d: { "Bugs / Issues": "https://gist.github.com/SPSquonK/82e728a785354b196ebedbc220e5b9a6#file-pokemoncamrylegend2-md" },
-					living_dex: "Final Clean Up"
-				}
-			];
-
-			// Populate the list
-			let list = document.getElementById("ListOfSaveFiles");
-			
-			for (let game of games) {
-				let trElement = document.createElement("tr");
-
-				function add(func) {
-					let tdElement = document.createElement("td");
-					func(tdElement);
-					trElement.appendChild(tdElement);
-				}
-
-				function addText(text) {
-					add(tdElement => tdElement.appendChild(document.createTextNode(text)));
-				}
-
-				addText("Pokemon " + game.game);
-				addText(game.version);
-				addText(game.date);
-				addText(game.player);
-
-				add(tdElement => {
-					if (game.path === undefined) {
-						tdElement.appendChild(document.createTextNode(game.save_file));
-					} else {
-						let aElement = document.createElement("a");
-						aElement.setAttribute("href", game.path);
-						aElement.appendChild(document.createTextNode("Save file"));
-						tdElement.appendChild(aElement);
-					}
-				})
-
-				add(tdElement => {
-					if (game.comments === undefined) {
-						if (game.comments_d === undefined) {
-							tdElement.appendChild(document.createTextNode(""));
-						} else {
-							let first = true;
-							for (let d in game.comments_d) {
-								if (!first) {
-									tdElement.appendChild(document.createTextNode(" / "));
-								} else {
-									first = false;
-								}
-
-								let aElement = document.createElement("a");
-								aElement.setAttribute("href", game.comments_d[d]);
-								aElement.appendChild(document.createTextNode(d));
-								tdElement.appendChild(aElement);
-							}
-						}
-					} else {
-						let aElement = document.createElement("a");
-						aElement.setAttribute("href", game.comments);
-						aElement.appendChild(document.createTextNode("Comments"));
-						tdElement.appendChild(aElement);
-					}
-				})
-
-				list.appendChild(trElement);
-			}
-
-		</script>
-
-
-		<p style="font-style: italic;">
-			Full living dex : Insurgence, Blue&White (155/151)
-		<br>Living dex of available Pokemon : Reborn, Zero
-		<br>Almost complete living dex : Rejuvenation (I miss some starters, Jangmo-o and Magby+), Soulstone (I miss Charmander, Squirtle, Breloom-Epoch, Coxiclaque-Epoch)
-		<br>I won't build a living dex on : Empyrean (most are only available in auctions + Pokedex is polluted by uncatachable Pokemon), Infinite Fusion (PokemonStorage lags too much)
-		</p>
-
-		<h2>Used Pokemon</h2>
-		<table id="teams" style="width: 800px;">
-		</table>
+			<p>
+				It's also better if you let me play quickly. Exposure before the
+				first fight of the game is useless because until I can pick a
+				Pokemon and see a battle, I'm not sure that I will keep playing.
+			</p>
 		
-		<table style="width: 250px;" id="cnt">
-			<tr>
-				<th style="width: 200px;">Pokémon</th>
-				<th>Usages</th>
-			</tr>
-		</table>
+			<h2>Saves hub</h2>
 
-		<h2>Scripts</h2>
+			<table id="ListOfSaveFiles">
+				<tr>
+					<th>Game</th><th>Version</th><th>Date</th><th>Player</th><th>Save file</th><th>Comments</th>
+				</tr>
+			</table>
 
-		<p>This section will list the scripts I usually apply.</p>
-		<p><em>TODO</em></p>
+			<p style="font-style: italic;">
+				Full living dex: Insurgence, Blue&White (155/151)
+			<br>Living dex of available Pokemon: Reborn, Zero
+			<br>Almost complete living dex: Rejuvenation (I miss some starters, Jangmo-o and Magby+), Soulstone (I miss Charmander, Squirtle, Breloom-Epoch, Coxiclaque-Epoch)
+			<br>I won't build a living dex on: Empyrean (most are only available in auctions + Pokedex is polluted by uncatachable Pokemon), Infinite Fusion (PokemonStorage lags too much)
+			</p>
 
-
-		<script>
-			let speciesId = {
-				"470": "Leafeon",
-				"429": "Mismagius",
-				"402": "Kricketune",
-				"334": "Altaria",
-				"199": "Slowking"
-			};
-
-			let count = {};
+			<h2>Used Pokemon</h2>
+			<table id="teams" style="width: 800px;">
+			</table>
 			
-			function addCount(name) {
-				if (speciesId[name] !== undefined) {
-					name = speciesId[name];
-				}
+			<table style="width: 500px;" id="cnt">
+				<tr>
+					<th style="width: 200px;">Pokémon + Form</th>
+					<th>Usages</th>
+					<th></th>
+					<th style="width: 200px;">Pokémon</th>
+					<th>Usages</th>
+				</tr>
+			</table>
 
-				let addOne = n => {
-					if (count[n] === undefined) {
-						count[n] = 0;
-					}
-					
-					count[n] += 1;
-				};
-				
-				if (name.substring(name.length - 4, name.length) == "Zero") {
-					name = name.substring(0, name.length - 4);
-					
-					if (name.substring(name.length - 1, name.length) == "_") {
-						name = name.substring(0, name.length - 1);
-					}
-				}
-					
-				if (name.substring(name.length - 5, name.length) == "_Mega") {
-					name = name.substring(0, name.length - 5);
-				} else if (name.substring(name.length - "_MegaEmp".length, name.length) == "_MegaEmp") {
-					name = name.substring(0, name.length - "_MegaEmp".length);
-				} else if (name.substring(name.length - "_Shiney".length, name.length) == "_Shiney") {
-					name = name.substring(0, name.length - "_Shiney".length);
-				}
-				
-				switch (name) {
-					case "IF_Toto":
-						addOne("Charizard");
-						addOne("Feraligatr");
-						break;
-					case "IF_Brule":
-						addOne("Typhlosion");
-						addOne("Gengar");
-						break;
-					case "IF_Cuicui":
-						addOne("Zapdos");
-						addOne("Gengar");
-						break;
-					case "IF_Catcheur":
-						addOne("Scizor");
-						break;
-					case "IF_FuseBugs":
-						addOne("Beedrill");
-						addOne("Beedrill");
-						break;
-					case "IF_Gen2":
-						addOne("Mewtwo");
-						addOne("Gengar");
-						break;
-					case "IF_King":
-						addOne("Nidoqueen");
-						break;
-					case "IF_Leona":
-						addOne("Ninetales");
-						break;
-					case "IF_Magie":
-						addOne("Alakazam");
-						break;
-					case "IF_Queen":
-						addOne("Nidoking");
-						break;
-					case "IF_Top":
-						addOne("Raticate");
-						break;
-					case "IF_Kyurem":
-						addOne("Kyurem");
-						addOne("Reshiram");
-						addOne("Zekrom");
-						break;
-					case "Greninja_Rejuvenation":
-						addOne("Greninja");
-						break;
-					case "Metagross_MegaSoulstone":
-						addOne("Metagross");
-						break;
-					case "Zap_Zap":
-						addOne("Zap Zap");
-						break;
-					default :
-						if (name == "Celebi_DarkEmp") {
-							addOne("Dark Celebi");
-						} else if (name == "Metagross_DeltaRuin_Crystal") {
-							addOne("Metagross Delta Ruin");
-						} else if (name == "Metagross_DeltaSpider") {
-							addOne("Metagross Delta Spider");
-						} else if (name == "Goodra_Emp") {
-							addOne("Goodra");
-						} else {
-							addOne(name.replace("_", " "));
-						}
-				}
-				
-			}
+			<h2>Scripts</h2>
+
+			<div id="scripts_section">
+				<p text-align: center;><em>List of scripts I use most of the time.</em></p>
+			</div>
+		</div>
 		
-			function addTeam(title, team) {
-				let table = document.getElementById("teams");
-				
-				let titleNode = document.createTextNode(title);
-				
-				let titleCell = document.createElement("th");
-				titleCell.appendChild(titleNode);
-				
-				let titleRow = document.createElement("tr");
-				titleRow.appendChild(titleCell);
-				
-				table.appendChild(titleRow);
-				
-				let teamNode = document.createElement("td");
-				
-				for (let pokemon of team) {
-					let imgElement = document.createElement("img");
-					imgElement.setAttribute('src', 'image/' + pokemon + '.png');
-					teamNode.appendChild(imgElement);
-					
-					addCount(pokemon);
-				}
-				
-				let teamRow = document.createElement("tr");
-				teamRow.appendChild(teamNode);
-				table.appendChild(teamRow);
-			}
-			
-			function fillCounts() {
-				let arry = [];
-				
-				for (pokemon in count) {
-					arry.push([pokemon, count[pokemon]]);
-				}
-				
-				arry.sort((a, b) => {
-					if (a[1] < b[1]) return 1;
-					if (a[1] > b[1]) return -1;
-					return a[0] < b[1];
-				})
-				
-				let table = document.getElementById("cnt");
-				for (pok of arry) {
-					let name = document.createElement("td");
-					name.appendChild(document.createTextNode(pok[0]));
-					
-					let number = document.createElement("td");
-					number.appendChild(document.createTextNode(pok[1]));
-				
-					let row = document.createElement("tr");
-					row.appendChild(name);
-					row.appendChild(number);
-					
-					table.appendChild(row);
-				}
-				
-				console.log(arry);
-			}
-
-			class Pokemon {
-				constructor(name, specie, form, image) {
-					if (form === undefined) {
-						form = "";
-					}
-
-					if (image === undefined) {
-						image = specie;
-					}
-
-					this.name = name;
-					this.specie = specie;
-					this.image = image;
-					this.role = role;
-				}
-			}
-
-			
-			function main() {
-				/*
-				let teams = {
-					"Reborn - Anna": [
-						new Pokemon(null, "Sceptile", "", "Sceptile_Mega"),
-						new Pokemon(null, "Swoobat", ""),
-						new Pokemon(null, "Magcargo"),
-						new Pokemon(null, "Ampharos", "", "Ampharos_Mega"),
-						new Pokemon(null, "Pangoro"),
-						new Pokemon(null, "Rapidash"),
-						new Pokemon(null, "Typhlosion"),
-						new Pokemon(null, "Ninetiles", "Alola", "Ninetales_Alola"),
-						new Pokemon(null, "Primarina"),
-						new Pokemon(null, "Serperior"),
-						new Pokemon(null, "Naganadel"),
-						new Pokemon(null, "Flygon")
-					],
-					"Reborn - Agathe": [
-						new Pokemon(null, "Delphox"),
-						new Pokemon(null, "Alakazam"),
-						new Pokemon(null, "Girafarig"),
-						new Pokemon(null, "Gardevoir"),
-						new Pokemon(null, "Gallade"),
-						new Pokemon(null, "Metagross"),
-						new Pokemon(null, "Slowbro")
-					],
-					"Insurgence": [
-
-
-
-					]
-				};
-				*/
-
-				addTeam("Reborn - Anna", [
-					"Sceptile_Mega", "Swoobat", "Magcargo", "Ampharos_Mega", "Pangoro", "Rapidash",
-					"Typhlosion", "Ninetales_Alola", "Greninja", "Primarina", "Serperior", "Naganadel",
-					"Flygon"
-				]);
-				
-				addTeam("Reborn - Agathe", [
-					"Delphox", "Alakazam", "Girafarig", "Gardevoir", "Gallade", "Metagross", "Slowbro"
-				]);
-					
-					
-				addTeam("Insurgence", [
-					"Venusaur_Delta_Mega", "Feraligatr_Mega", "Typhlosion_Mega", "Ampharos_Mega",
-					"Metagross_DeltaSpider_Mega", "Metagross_DeltaRuin_Crystal", "Metagross_Mega",
-					"Volcarona_Delta", "Arnanine_Delta", "Gallade"
-				]);
-				
-				addTeam("Rejuvenation - Anna", [
-					"Greninja_Rejuvenation", "Smogonbird", "Nidoking", "Lycanroc_Dusk", "Zebstrika",
-					"Venusaur", "Torkoal", "Typhlosion", "Ampharos", "Blastoise", "Kingdra", "Flygon",
-					"Metagross", "Ninetales_Alola", "Zygarde_10", "Hydreigon"
-				]);
-				
-				addTeam("Rejuvenation - Lillia", [
-					"Serperior", "Smogonbird", "Cinccino", "Espeon", "Rapidash", "Tyranitar",
-					"Vaporeon_Shiney", "Rotom_Heat", "Marowak_Alola", "Charizard", "Krookodile"
-				]);
-				
-				addTeam("Empyrean - Anna", [
-					// Rox (male) / Zaptres (female) / SKaRM CReW (female) / Bad Riz (Male) / Tony H4wk (Male) / Jardinier (Male) / Dio?!
-					// Rox et Rouky / Mini Electhor / Mini Airmure / Good = Bad / C'est un skateur / Il a un faux / The World
-					"Delphox_MegaEmp", "Swellow_Omuran", "Honchkrow_Omuran", "Goodra_Emp", "Lucario_Omuran", "Ursaring_Omuran", "Celebi_DarkEmp"
-				]);
-				
-				addTeam("Empyrean - Oceane", [
-					// Rain / Maximum / Fulgur / Laouni / Mario
-					// Primarina -> Lana (pokegirl de la 7G) -> Lana Rain / Average = Maximum / Les cartes Atq dans FlyFF / C'est une fouine / idk
-					"Primarina_MegaEmp", "Averat", "Machamp_Omuran", "Mienshao_Omuran", "Krookodile",
-					// Bene / Ariane / Celebi
-					// Demon One, Bene - Fusion / Lucario -> Lucariane -> Ariane / C'est un Celebi
-					"Typhlosion", "Lucario_Omuran", "Celebi_DarkEmp"
-					// + les réincarnations de SKaRM CReW (Skarm Crew) et Zaptres (Zap)
-				]);
-				
-				addTeam("Infinite Fusion - J'ai Six Cas", [
-					"IF_Toto", "IF_Top", "IF_King", "IF_Queen", "IF_Magie",
-					"IF_Cuicui", "IF_Gen2", "IF_Brule", "IF_Leona", "IF_Catcheur", "IF_Kyurem"
-				]);
-
-				addTeam("Soul Stone - Agathe", [
-					// Snowball / Bzzt / BugCatcher / Le Roi / Fractale / Super PC
-					// Moxie permet de snowball / Bzzzzt / C'était mon pokémon pour en capturer au début / oui / la queue / 5000 IQ ne passait pas
-					// parce que Q c'est gauche chez moi donc j'ai mis ce que c'était un Métalosse ...
-					"Feraligatr", "Galvantula", "Parasect", "Nidoking", "Espeon", "Metagross_MegaSoulstone"
-				]);
-
-				addTeam("Zero - Anna", [
-					// Smash / Jean-Michel / La Tank / Donphan / Venusaur / Metagross / Playboy / Gym Trainer
-					// Shell Smash / idk / C'est un tank / flemme de rename avec le bug des lettres Q et F / ...
-					// / C'est un lapin / J'ai utilisé Mewtwo pour pex tout le monde vu que Metagross arrétait pas de miss
-					"Blastoise_MegaZero", "Parasect_Zero", "Ampharos_MegaZero", "Donphan_Zero", "Venusaur_Zero", "Metagross_MegaZero", "Cinderace_Zero", "Mewtwo_Zero"
-				]);
-
-				addTeam("Blue & White - Marion", [
-					// Alain / Zapquadro / Initial D / Mysteria / Ouuh Ahaf / To the top
-					// C'est écrit dans mon livre voilà / Zapdos and pals / Banane -> Glisser -> Dérapage -> INITIAL D / Coon -> The Coon -> Mysterion -> Mysteria / Wouf / KabuTOPS
-					"Vespyre", "Zap_Zap", "Halakik", "Fircoon", "Snowbreak", "Kabutops_IL"
-				]);
-
-				addTeam("The Camry Legend 2 - Anna", [
-					// Leafeon - Final D / Kricketune - Surprise / Biatch - Rapidash / Majo - Mismagius / Fluff - Altaria / Jhin - Slowking
-					"470", "402", "Rapidash", "429", "334", "199"
-				]);
-				
-				fillCounts();
-			}
-		
-			main();
-		</script>
+		<script type="text/javascript" src="content.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+		<script src="js.js"></script>
+		<script type="text/javascript" src="scripts/scripts.js"></script>
 	</body>
 </html>

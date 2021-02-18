@@ -1,0 +1,354 @@
+const pokemons = {
+    // Main = Played a significant role (no value implies true)
+    // Not main = Was used but does not fit the 6 displayed slots
+    // Commentated = Trained but either unused because end of the game or was bad or anything
+    Reborn: {
+        Anna: {
+            // Every name refers to a friend (if we suppose that I'm a friend of myself)
+            "JuJu": { specie: "Sceptile", image: "Sceptile_Mega" },
+            "Sguel": { specie: "Swoobat", main: false },
+            "Vignefranche": { specie: "Magcargo" },
+            "Big Mac": { specie: "Ampharos", image: "Ampharos_Mega"},
+            "Stehpen": { specie: "Pangoro", main: false },
+            "Blondie": { specie: "Rapidash", main: false } /* Not sure if I should give the last main slot to her or Pietro */, 
+            "VValid": "Typhlosion",
+            "Maléfice": { specie: "Ninetales", form: "Alola", image: "Ninetales_Alola", main: false },
+            "JoJo": { specie: "Greninja", battler: "Greninja_Reborn" },
+            "Pietro": "Primarina",
+            // -- Not actually used pokemons
+            // "Rice Soul": "Serperior"
+            // "Bocal": "Naganadel"
+            // "Lulu": "Flygon"
+        },
+        Agathe: {
+            "Burnout": "Delphox",           // Burnout 3
+            "El magiciano": "Alakazam",
+            "A girafe": { specie: "Girafarig", main: false },
+            "Waifu": "Gardevoir",
+            "Husbando": "Gallade",
+            "Deus Ex": "Metagross",         // Machina
+            "Fast Sis": "Slowbro"
+        }
+    },
+    Insurgence: {
+        // Notes:
+        // - Every actually used pokemons are able to Mega Evolve
+        // - Despite this, I don't even own the Ampharosite as it can function without it, and I considered it to be
+        // more interesting to mega evolve a Pokemon able to sweep / a Hubris user
+        // - Gallade also didn't mega evolve, because increasing Hypnosis precision was more interesting that increasing
+        // its damages.
+        "FlowerPower": { specie: "Venusaur", form: "Delta", image: "Venusaur_Delta_Mega" },
+        "Jaw": { specie: "Feraligatr", image: "Feraligatr_Mega_Insurgence" },
+        "Inferno": { specie: "Typhlosion", image: "Typhlosion_Mega_Insurgence" },
+        // Name refers to the fact that I did half of the game with only FP / Jaw / Inferno, so he is almost the chosen one
+        "The Fourth": "Ampharos",
+        // Found in a nest of Ariados, but he is the fifth party member
+        "Ariacinque": { specie: "Metagross", form: "Delta_Spider", image: "Metagross_DeltaSpider_Mega" },
+        // One of the reason why I played Insurgence is because I thought we could use Crystal form + Mega evolution in
+        // the same fight, and also because I thought Metagross Delta Ruin Crystal was awesome. Metagross Delta Ruin is
+        // unvailable the whole game, and is kind of bad, so rip.
+        // "SixSixSix": { specie: "Metagross", form: "Delta_Ruin", image: "Metagross_DeltaRuin_Crystal", main: false },
+        // Mainly for battle frontier. This Metagross was still kind of used, but no to the extent of the five mains
+        // party members. And the real 6th party member was used a lot so he deserves some credits.
+        "Seventh Hvn": { specie: "Metagross", image: "Metagross_Mega", main: false },
+        // -- Trained but not really used in practice
+        // "No Weakness": { specie: "Volcarona", form: "Delta", image: "Volcarona_Delta_Armored", main: false },
+        // "Scaling Dog": { specie: "Arcanine": form: "Delta", image: "Arnanine_Delta", main: false },
+        // And this is the real 6th party member, which actually was mostly acting on its own as a Pokemon Catcher / trainer
+        "The Voice": "Gallade"
+    },
+    Rejuvenation: {
+        Anna: {
+            // All the following Pokemon actually had good usage
+            "Kuro Hàha": { specie: "Greninja", image: "Greninja_Rejuvenation" },
+            "Bravest": { specie: "Talonflame", main: false, battler: "Smogonbird" },
+            "Niho Hahn": { specie: "Nidoking", main: true },
+            "Ouho Uhaf": { specie: "Lycanroc", main: false, image: "Lycanroc_Dusk" },
+            "The Bro": { specie: "Zebstrika", main: false },
+            // Members of the Fuck Terrain Squad
+            "NastyFlower": "Venusaur" /* Grassy Terrain */,
+            "Fire Starter": "Torkoal" /* Sun to help Venusaur */,
+            "Err Upsion": "Typhlosion", /* If I have Grassy Terrain and Sun, I can just burn the world */
+            // Other pokemons
+            "Mouh Thon": "Ampharos",
+            // Was supposed to be used with False Swipe + Yawn. Dropped the idea
+            // "Blatoise": "Blastoise",
+            // Late Game Cleaners
+            "TheRainMan": { specie: "Kingdra", main: false },
+            "TFW No Mega": "Flygon",
+            "Dataset": { specie: "Metagross", main: false },
+            "Pyrite": { specie: "Ninetales", form: "Alola", image: "Ninetales_Alola", main: false },
+            "Dogar": { specie: "Zygarde", form: "10%", image: "Zygarde_10", main: false },
+            "Trinity": { specie: "Hydreigon", main: false } /* Trained by Anna but mostly unused by her, used by Lillia */
+        },
+        Lillia: {
+            // Lillia was played with a set level cap to 85 on Hard Difficulty,
+            // When I reached the max level on Serperior, I authorized myself
+            // to use Anna's Pokemon using a SharedBox script.
+            // AFAIR, Metagross, Kingdra and Hydreigon were the most used
+            // Pokemon from Anna
+            "Snivy West": "Serperior",
+            // Ok so why do I have two Talonflame: this one kept the Quick Guard
+            // move to beat Yveltal.
+            "Guardian": { specie: "Talonflame", battler: "Smogonbird" },
+            "Flip Flap": "Cinccino",
+            "PewPew~": { specie: "Espeon", main: true },
+            "Front-end": { specie: "Rapidash", main: false },
+            "Tyrany": "Tyranitar",
+            "Aqua 404": { specie: "Vaporeon", battler: "Vaporeon_Shiney" },
+            // Fire Squad, mostly unused
+            "Top Chef": { specie: "Rotom", form: "Heat", image: "Rotom_Heat", main: false },
+            "Beast Killer": { specie: "Marowak", form: "Alola", image: "Marowak_Alola", main: false },
+            // Did you know that +6 Charizard still couldn't one shot some Pokemons ?
+            // "Dragon Feu": { specie: "Charizard", main: false },
+            "Gang Master": { specie: "Krookodile", main: false },
+        },
+        Rounoi: {
+            // Fighting avorted mono. Had to hack all the fighting starters
+            // because there are no fighting pokemon available up to Venam and
+            // Pulse Mushana.
+            // Jangmo-o is the true starter.
+            "MonteLeSon": "Hakamo-o",
+            "Shiel": "Quilladin",
+            "Roti": "Pignite",
+            "Service RH": "Monferno",
+            "Un poussin": "Combusken",
+            "Yoga Girl": "Meditite",
+            "Secret Box": "Hariyama"
+        }
+    },
+    "Empyrean": {
+        "Anna": {
+            // I'm a bit salty to have lost them
+            // Rox et Rouky
+            "Rox": { specie: "Delphox", battler: "Delphox_Mega_Empyrean", sex: "Male" },
+            // Discount Zapdos
+            "Zaptres": { specie: "Swellow", form: "Omuran", sex: "Female" },
+            // Discount Skarmory
+            "SKaRM CReW": { specie: "Honchkrow", form: "Omuran", sex: "Female" },
+            // Good / Bad
+            "Bad Riz": { specie: "Goodra", battler: "Goodra_Empyrean", sex: "Male", main: false },
+            "Tony H4wk": { specie: "Lucario", form: "Omuran", sex: "Male" },
+            "Jardinier": { specie: "Ursaring", form: "Omuran", sex: "Male", main: false },
+            // THE WARUDO
+            "Dio?!": { specie: "Celebi", form: "Omuran" }
+        },
+        "Océane": {
+            // Primarina -> Lana -> Lana Rain
+            "Rain": { specie: "Primarina", image: "Primarina_Mega_Empyrean" },
+            "Maximum": { specie: "Averat", main: false },
+            "Fulgur": { specie: "Machamp", form: "Omuran" },
+            "Laouni": { specie: "Mienshao", form: "Omuran", main: false },
+            "Mario": "Krookodile",
+            "Bene": "Typhlosion",
+            "Ariane": { specie: "Lucario", form: "Omuran" },
+            "Celebi": { specie: "Celebi", form: "Omuran" }
+            // + Skarm Crew and Zap as the reincarnation of the fallen ones
+        }
+    },
+    InfiniteFusion: {
+        // Charizard name : DragonFeu. True starter is Charizard
+/* Charizard */ "Toto": { specie: [ "Feraligatr", "Charizard" ], battler: "IF_Toto", main: false },
+        "Top%": { specie: "Rattatac", main: false, battler: "IF_Top" },
+        // "King": { specie: "Nidoqueen", battler: "IF_King" }
+        "Queen": { specie: "Nidoking", battler: "IF_Queen" },
+        "Magic": { specie: "Alakazam", battler: "IF_Magie" },
+/* Gengar */ "Cui Cui": { specie: [ "Gengar", "Zapdos" ], battler: "IF_Cuicui" },
+/* Gengar */ "Gen2": { specie: [ "Gengar", "Mewtwo" ], battler: "IF_Gen2" },
+        // Her main purpose was to serve as a fusion for Brule, but Brule ended up
+        // possessed by a 3rd Gengar after seeing that the Typhlosion - Ninetales
+        // cooperation wasn't bringing good results
+        // "Leona": { specie: "Ninetales", battler: "IF_Leona" },
+        // Brule is actually Typhlosion's name.
+/* Typhlosion */ "Brule": { specie: [ "Typhlosion", "Gengar" ], battler: "IF_Brule" },
+        // (Zapdos)
+        // (Feraligatr)
+        // (Mewtwo)
+        // (Unamed Gengar)
+        /* Catcheur was temporarly fused to Rayquaza but it was better to actually let it alone */
+        "Catcheur": { specie: "Scizor", battler: "IF_Catcheur", main: false },
+        "Kyurem": { specie: [ "Kyurem", "Reshiram", "Zekrom" ], battler: "IF_Kyurem" }
+    },
+    SoulStone: {
+        "Snowball": "Feraligatr",
+        "Bzzt": "Galvantula",
+        "BugCatcher": "Parasect",
+        "Le Roi": "Nidoking",
+        // Refers to the tail
+        "Fractale": "Espeon",
+        // I wanted 5000 IQ but the Q key is glitched with control remapping.
+        "Super PC": { specie: "Metagross", battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega" }
+    },
+    Zero: {
+        // -- Adventure
+        // Shell Smash
+        "Smash": { specie: "Blastoise", battler: "Blastoise_Mega_Zero", icon: "Blatoise_Mega" },
+        "Jean-Michel": { specie: "Parasect", battler: "Parasect_Zero" },
+        "La Tank": { specie: "Ampharos", battler: "Ampharos_Mega_Zero", icon: "Ampharos_Mega" },
+        "Donphan": { specie: "Donphan", battler: "Donphan_Zero", main: false },
+        "Venusaur": { specie: "Venusaur", battler: "Venusaur_Zero" },
+        "Metagross": { specie: "Metagross", battler: "Metagross_Mega_Zero", icon: "Metagross_Mega" },
+        // -- Post game
+        "Playboy": { specie: "Cinderace", battler: "Cinderace_Zero", main: false },
+        // -- I used him instead of Metagross because I couldn't stand misses
+        "Gym Trainer": { specie: "Mewtwo", battler: "Mewtwo_Zero" }
+    },
+    "Blue & White": {
+        // It's written in his book.
+        "Alain": "Vespyre",
+        // Same kind of Pokemon as Omuran Swellow, so its nicknamed after his cousin.
+        "Zapquadro": { specie: "Zap Zap", image: "Zap_Zap" },
+        // Banana -> slip -> drift -> DEJA VU
+        "Initial D": "Halakik",
+        // Coon -> The Coon -> Mysterion -> Mysteria
+        "Mysteria": "Fircoon",
+        "Ouuh Ahaf": "Snowbreak",
+        // I'm sorry but I kind of don't want to flat out write Israel (or any
+        // real country beside France) on my website so I'll go with IL
+        "To the top": { specie: "Kabutops", form: "IL" }
+    },
+    "The Camry Legend 2": {
+        "Final D": "Leafeon",
+        "Surprise": "Kricketune",
+        "Biatch": "Rapidash",
+        "Majo": "Mismagius",
+        "Fluff": "Altaria",
+        // It was basically a Surf slave
+        // "Jhin": "Slowking"
+    }
+};
+
+
+// Save Files
+const games = [
+    {
+        game: "Reborn",
+        version: "V18.1",
+        date: "2019-09/10",
+        player: "Anna",
+        path: "Reborn_Anna.rxdata",
+        living_dex: "Available",
+        pokemons: pokemons.Reborn.Anna
+    },
+    {
+        game: "Reborn",
+        version: "V18.1",
+        date: "2019-12",
+        player: "Agathe",
+        path: "Reborn_Agathe.rxdata",
+        living_dex: "Shared",
+        pokemons: pokemons.Reborn.Agathe
+    },
+    {
+        game: "Insurgence",
+        version: "1.2.7",
+        date: "2020-07",
+        player: "Anna",
+        path: "Insurgence.rxdata",
+        comments: "https://gist.github.com/SPSquonK/584e3208451fd4ae5e887641e0fd35aa#file-pokemoninsurgence-md",
+        living_dex: "Full",
+        pokemons: pokemons.Insurgence
+    },
+    {
+        game: "Rejuvenation",
+        version: "V12",
+        date: "2020-07",
+        player: "Anna",
+        path: "Rejuvenation_Anna.rxdata",
+        comments: "https://gist.github.com/SPSquonK/2a010fd6448cf80c72df3e838b34cde3#file-pokemonrejuvenation-md",
+        living_dex: "Available - Magby+",
+        pokemons: pokemons.Rejuvenation.Anna
+    },
+    {
+        game: "Rejuvenation",
+        version: "V12",
+        date: "2020-08",
+        player: "Lillia",
+        path: "Rejuvenation_Lillia.rxdata",
+        living_dex: "Shared",
+        pokemons: pokemons.Rejuvenation.Lillia
+    },
+    {
+        game: "Shield",
+        version: "",
+        date: "2020-09",
+        player: "",
+        save_file: "",
+        comments: "https://gist.github.com/SPSquonK/8935b20656865207f6860f25e31fb5d8",
+        living_dex: "New Pokemon - No Zacian but 2 Zamazenta"
+    },
+    {
+        game: "Empyrean",
+        version: "V1.0.0",
+        date: "2020-09",
+        player: "Anna",
+        comment: "Lost my save because it was not stored in the Saved Games folder",
+        save_file: "RIP",
+        comments_d: {
+            "Small Comments": "https://gist.github.com/SPSquonK/67de420974560efa8062c410704bc9a8"
+        },
+        living_dex: "Catchable",
+        pokemons: pokemons.Empyrean.Anna
+    },
+    {
+        game: "Empyrean",
+        version: "V1.0.1",
+        date: "2020-09",
+        player: "Océane",
+        path: "Empyrean_Oceane.rxdata",
+        comments_d: {
+            "Rainbow Notes": "https://gist.github.com/SPSquonK/85b204466680ca6d48e30c05442f0096"
+        },
+        living_dex: "No",
+        pokemons: pokemons.Empyrean["Océane"]
+    },
+    {
+        game: "Infinite Fusion",
+        version: "V4.8",
+        date: "2020-10",
+        player: "J'ai Six Cas",
+        path: "InfiniteFusion_Jessica.rxdata",
+        comments: "https://gist.github.com/SPSquonK/d769ca9cd6b5e611a3ae1d4631c12aca#file-infinitefusion-md",
+        living_dex: "No",
+        pokemons: pokemons.InfiniteFusion
+    },
+    {
+        game: "Soulstone",
+        version: "V1.0.17",
+        date: "2021-01",
+        player: "Agathe",
+        path: "Soulstone_Agathe.rxdata",
+        comments: "https://gist.github.com/SPSquonK/797d222a45987a13a2e63e087a8ca849#file-pokemonsoulstone-md",
+        living_dex: "Available - mutually exclusives",
+        pokemons: pokemons.SoulStone
+    },
+    {
+        game: "Zero",
+        version: "V0.10.2",
+        date: "2021-01",
+        player: "Anna",
+        path: "Zero_Anna.rxdata",
+        comments: "https://gist.github.com/SPSquonK/6f21c3e30dd3a884becff5f4f3d90f34#file-pokemonzero-md",
+        living_dex: "Available",
+        pokemons: pokemons.Zero
+    },
+    {
+        game: "Blue And White",
+        version: "",
+        date: "2021-02",
+        player: "Marion",
+        path: "BlueWhite_Marion.rxdata",
+        living_dex: "Full",
+        pokemons: pokemons["Blue & White"]
+    },
+    {
+        game: "The Camry Legend 2",
+        version: "V1.2",
+        date: "2021-02",
+        player: "Anna",
+        path: "CamryLegend2.rxdata",
+        comments_d: { "Bugs / Issues": "https://gist.github.com/SPSquonK/82e728a785354b196ebedbc220e5b9a6#file-pokemoncamrylegend2-md" },
+        living_dex: "Final Clean Up",
+        pokemons: pokemons["The Camry Legend 2"]
+    }
+];
