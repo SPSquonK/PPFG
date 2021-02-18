@@ -10,6 +10,13 @@
 			table#teams, table#teams tr, table#teams th, table#teams td { border: 1px black solid; border-collapse: collapse; text-align: center;}
 			
 			#cnt { margin: auto; border: 1px black solid; text-align: center;}
+
+
+			table#ListOfSaveFiles, table#ListOfSaveFiles tr {
+				text-align: center;
+				border: 1px black solid;
+				border-collapse: collapse;
+			}
 		</style>
 	</head>
 	<body>
@@ -31,9 +38,16 @@
 	
 		<h2>Saves hub</h2>
 
-
-		<ul id="ListOfSaveFiles">
-		</ul>
+		<table id="ListOfSaveFiles">
+			<tr>
+				<th>Game</th>
+				<th>Version</th>
+				<th>Date</th>
+				<th>Player</th>
+				<th>Save file</th>
+				<th>Comments</th>
+			</tr>
+		</table>
 
 		<script>
 			// Save Files
@@ -43,77 +57,118 @@
 					version: "V18.1",
 					date: "2019-09/10",
 					player: "Anna",
-					path: "Reborn_Anna.rxdata"
+					path: "Reborn_Anna.rxdata",
+					living_dex: "Available"
 				},
 				{
 					game: "Reborn",
 					version: "V18.1",
 					date: "2019-12",
 					player: "Agathe",
-					path: "Reborn_Agathe.rxdata"
+					path: "Reborn_Agathe.rxdata",
+					living_dex: "Shared"
 				},
 				{
 					game: "Insurgence",
 					version: "1.2.7",
 					date: "2020-07",
 					player: "Anna",
-					path: "Insurgence.rxdata"
+					path: "Insurgence.rxdata",
+					comments: "https://gist.github.com/SPSquonK/584e3208451fd4ae5e887641e0fd35aa#file-pokemoninsurgence-md",
+					living_dex: "Full"
 				},
 				{
 					game: "Rejuvenation",
 					version: "V12",
 					date: "2020-07",
 					player: "Anna",
-					path: "Rejuvenation_Anna.rxdata"
+					path: "Rejuvenation_Anna.rxdata",
+					comments: "https://gist.github.com/SPSquonK/2a010fd6448cf80c72df3e838b34cde3#file-pokemonrejuvenation-md",
+					living_dex: "Available - Magby+"
 				},
 				{
 					game: "Rejuvenation",
 					version: "V12",
 					date: "2020-08",
 					player: "Lillia",
-					path: "Rejuvenation_Lillia.rxdata"
+					path: "Rejuvenation_Lillia.rxdata",
+					living_dex: "Shared"
+				},
+				{
+					game: "Shield",
+					version: "",
+					date: "2020-09",
+					player: "",
+					save_file: "",
+					comments: "https://gist.github.com/SPSquonK/8935b20656865207f6860f25e31fb5d8",
+					living_dex: "New Pokemon - No Zacian but 2 Zamazenta"
 				},
 				{
 					game: "Empyrean",
 					version: "V1.0.0",
 					date: "2020-09",
 					player: "Anna",
-					comment: "Lost my save because it was not stored in the Saved Games folder"
+					comment: "Lost my save because it was not stored in the Saved Games folder",
+					save_file: "RIP",
+					comments_d: {
+						"Small Comments": "https://gist.github.com/SPSquonK/67de420974560efa8062c410704bc9a8"
+					},
+					living_dex: "Catchable"
 				},
 				{
 					game: "Empyrean",
 					version: "V1.0.1",
 					date: "2020-09",
 					player: "Océane",
-					path: "Empyrean_Oceane.rxdata"
+					path: "Empyrean_Oceane.rxdata",
+					comments_d: {
+						"Rainbow Notes": "https://gist.github.com/SPSquonK/85b204466680ca6d48e30c05442f0096"
+					},
+					living_dex: "No"
 				},
 				{
 					game: "Infinite Fusion",
 					version: "V4.8",
 					date: "2020-10",
 					player: "J'ai Six Cas",
-					path: "InfiniteFusion_Jessica.rxdata"
+					path: "InfiniteFusion_Jessica.rxdata",
+					comments: "https://gist.github.com/SPSquonK/d769ca9cd6b5e611a3ae1d4631c12aca#file-infinitefusion-md",
+					living_dex: "No"
 				},
 				{
 					game: "Soulstone",
 					version: "V1.0.17",
 					date: "2021-01",
 					player: "Agathe",
-					path: "Soulstone_Agathe.rxdata"
+					path: "Soulstone_Agathe.rxdata",
+					comments: "https://gist.github.com/SPSquonK/797d222a45987a13a2e63e087a8ca849#file-pokemonsoulstone-md",
+					living_dex: "Available - mutually exclusives"
 				},
 				{
 					game: "Zero",
 					version: "V0.10.2",
 					date: "2021-01",
 					player: "Anna",
-					path: "Zero_Anna.rxdata"
+					path: "Zero_Anna.rxdata",
+					comments: "https://gist.github.com/SPSquonK/6f21c3e30dd3a884becff5f4f3d90f34#file-pokemonzero-md",
+					living_dex: "Available"
 				},
 				{
 					game: "Blue And White",
 					version: "",
 					date: "2021-02",
 					player: "Marion",
-					path: "BlueWhite_Marion.rxdata"
+					path: "BlueWhite_Marion.rxdata",
+					living_dex: "Full"
+				},
+				{
+					game: "The Camry Legend 2",
+					version: "V1.2",
+					date: "2021-02",
+					player: "Anna",
+					path: "CamryLegend2.rxdata",
+					comments_d: { "Bugs / Issues": "https://gist.github.com/SPSquonK/82e728a785354b196ebedbc220e5b9a6#file-pokemoncamrylegend2-md" },
+					living_dex: "Final Clean Up"
 				}
 			];
 
@@ -121,27 +176,62 @@
 			let list = document.getElementById("ListOfSaveFiles");
 			
 			for (let game of games) {
-				let textContent = "Pokémon " + game.game;
+				let trElement = document.createElement("tr");
 
-				if (game.version !== undefined) textContent += " " + game.version;
-				textContent += " (" + game.date + ", " + game.player + ")";
-
-				const text = document.createTextNode(textContent);
-
-				let aElement;
-
-				if (game.path === undefined) {
-					aElement = text;
-				} else {
-					aElement = document.createElement("a");
-					aElement.setAttribute("href", game.path);
-					aElement.appendChild(text);
+				function add(func) {
+					let tdElement = document.createElement("td");
+					func(tdElement);
+					trElement.appendChild(tdElement);
 				}
 
-				const liElement = document.createElement("li");
-				liElement.appendChild(aElement);
+				function addText(text) {
+					add(tdElement => tdElement.appendChild(document.createTextNode(text)));
+				}
 
-				list.appendChild(liElement);
+				addText("Pokemon " + game.game);
+				addText(game.version);
+				addText(game.date);
+				addText(game.player);
+
+				add(tdElement => {
+					if (game.path === undefined) {
+						tdElement.appendChild(document.createTextNode(game.save_file));
+					} else {
+						let aElement = document.createElement("a");
+						aElement.setAttribute("href", game.path);
+						aElement.appendChild(document.createTextNode("Save file"));
+						tdElement.appendChild(aElement);
+					}
+				})
+
+				add(tdElement => {
+					if (game.comments === undefined) {
+						if (game.comments_d === undefined) {
+							tdElement.appendChild(document.createTextNode(""));
+						} else {
+							let first = true;
+							for (let d in game.comments_d) {
+								if (!first) {
+									tdElement.appendChild(document.createTextNode(" / "));
+								} else {
+									first = false;
+								}
+
+								let aElement = document.createElement("a");
+								aElement.setAttribute("href", game.comments_d[d]);
+								aElement.appendChild(document.createTextNode(d));
+								tdElement.appendChild(aElement);
+							}
+						}
+					} else {
+						let aElement = document.createElement("a");
+						aElement.setAttribute("href", game.comments);
+						aElement.appendChild(document.createTextNode("Comments"));
+						tdElement.appendChild(aElement);
+					}
+				})
+
+				list.appendChild(trElement);
 			}
 
 		</script>
@@ -172,9 +262,21 @@
 
 
 		<script>
+			let speciesId = {
+				"470": "Leafeon",
+				"429": "Mismagius",
+				"402": "Kricketune",
+				"334": "Altaria",
+				"199": "Slowking"
+			};
+
 			let count = {};
 			
 			function addCount(name) {
+				if (speciesId[name] !== undefined) {
+					name = speciesId[name];
+				}
+
 				let addOne = n => {
 					if (count[n] === undefined) {
 						count[n] = 0;
@@ -447,10 +549,15 @@
 					// C'est écrit dans mon livre voilà / Zapdos and pals / Banane -> Glisser -> Dérapage -> INITIAL D / Coon -> The Coon -> Mysterion -> Mysteria / Wouf / KabuTOPS
 					"Vespyre", "Zap_Zap", "Halakik", "Fircoon", "Snowbreak", "Kabutops_IL"
 				]);
+
+				addTeam("The Camry Legend 2 - Anna", [
+					// Leafeon - Final D / Kricketune - Surprise / Biatch - Rapidash / Majo - Mismagius / Fluff - Altaria / Jhin - Slowking
+					"470", "402", "Rapidash", "429", "334", "199"
+				]);
 				
 				fillCounts();
 			}
-			
+		
 			main();
 		</script>
 	</body>
