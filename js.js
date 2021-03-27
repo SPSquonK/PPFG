@@ -9,6 +9,13 @@
 let list = document.getElementById("ListOfSaveFiles");
 
 for (let game of games) {
+    if (game.history !== undefined) {
+        game.version = game.history[0].version + " > " + game.history[game.history.length - 1].version;
+        game.date = game.history[0].date + "+";
+        game.path = game.history[game.history.length - 1].path;
+    }
+
+
     let trElement = document.createElement("tr");
 
     function add(func) {
@@ -21,6 +28,49 @@ for (let game of games) {
         add(tdElement => tdElement.appendChild(document.createTextNode(text)));
     }
 
+    {
+        let usedPokemons = document.createElement("td");
+
+        if (game.pokemons !== undefined) {
+            console.log(game.pokemons);
+            for (let pkmn_ in game.pokemons) {
+                let pkmn = game.pokemons[pkmn_];
+                
+                if (typeof pkmn === 'string' || pkmn instanceof String
+                    || pkmn.main !== false) {
+                    let sprite = document.createElement("img");
+
+                    let url = "";
+                    if (typeof pkmn === 'string' || pkmn instanceof String) {
+                        url = pkmn;
+                    } else if (pkmn.icon !== undefined) {
+                        url = pkmn.icon;
+                    } else if (pkmn.image !== undefined) {
+                        url = pkmn.image;
+                    } else {
+                        url = pkmn.specie;
+                        if (pkmn.form !== undefined) {
+                            url += "_" + pkmn.form;
+                        }
+                    }
+
+                    sprite.setAttribute("src", "icons/" + url + ".png");
+                    // sprite.setAttribute("class", "sprite");
+
+                    let span = document.createElement("span");
+                    span.appendChild(sprite);
+                    span.setAttribute("class", "sprite");
+                    usedPokemons.appendChild(span);
+                }
+            }
+
+        }
+
+
+        trElement.appendChild(usedPokemons);
+    }
+
+
     addText("Pokemon " + game.game);
     addText(game.version);
     addText(game.date);
@@ -31,7 +81,7 @@ for (let game of games) {
             tdElement.appendChild(document.createTextNode(game.save_file));
         } else {
             let aElement = document.createElement("a");
-            aElement.setAttribute("href", game.path);
+            aElement.setAttribute("href", "saves/" + game.path);
             aElement.appendChild(document.createTextNode("Save file"));
             tdElement.appendChild(aElement);
         }
@@ -80,7 +130,7 @@ for (let game of games) {
 let count = {};
 let countMergedForms = {};
 
-function addCount(name, form) {
+function addCount(name, form, family, ignore_specie_name) {
     let addOne = (dict, n) => {
         if (dict[n] === undefined) {
             dict[n] = 0;
@@ -89,10 +139,14 @@ function addCount(name, form) {
         dict[n] += 1;
     };
 
-    addOne(countMergedForms, name);
+    addOne(countMergedForms, family || name);
 
     if (form !== undefined) {
-        name = name + " " + form;
+        if (ignore_specie_name) {
+            name = form;
+        } else {
+            name = name + " " + form;
+        }
     }
 
     addOne(count, name);
@@ -148,7 +202,7 @@ function addTeamDict(title, team) {
                 addCount(subPokemon);
             }
         } else {
-            addCount(pkmn.specie, pkmn.form);
+            addCount(pkmn.specie, pkmn.form, pkmn.family, pkmn.ignore_specie_name);
         }
     }
 

@@ -24,6 +24,12 @@ const scripts = [
         path: "faster_.rb",
         description: "Less text boxes when a Pokemon tries to learn a move. No level up scene.",
         reason: "To complete a living dex, lots of Pokemon have to be leveled up. But for these Pokemon, stats and moves are not important. This script removes useless textboxes without hindering the regular party ability to learns moves."
+    },
+    {
+        name: "Diffs",
+        author: "SquonK",
+        path: "diffs.diff",
+        description: "Various modifications"
     }
 ]
 

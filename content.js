@@ -60,7 +60,7 @@ const pokemons = {
     Rejuvenation: {
         Anna: {
             // All the following Pokemon actually had good usage
-            "Kuro Hàha": { specie: "Greninja", image: "Greninja_Rejuvenation" },
+            "Kuro Hàha": { specie: "Greninja", battler: "Greninja_Rejuvenation" },
             "Bravest": { specie: "Talonflame", main: false, battler: "Smogonbird" },
             "Niho Hahn": { specie: "Nidoking", main: true },
             "Ouho Uhaf": { specie: "Lycanroc", main: false, image: "Lycanroc_Dusk" },
@@ -75,7 +75,7 @@ const pokemons = {
             // "Blatoise": "Blastoise",
             // Late Game Cleaners
             "TheRainMan": { specie: "Kingdra", main: false },
-            "TFW No Mega": "Flygon",
+            "TFW No Mega": { specie: "Flygon", main: false },
             "Dataset": { specie: "Metagross", main: false },
             "Pyrite": { specie: "Ninetales", form: "Alola", image: "Ninetales_Alola", main: false },
             "Dogar": { specie: "Zygarde", form: "10%", image: "Zygarde_10", main: false },
@@ -129,55 +129,65 @@ const pokemons = {
             // Good / Bad
             "Bad Riz": { specie: "Goodra", battler: "Goodra_Empyrean", sex: "Male", main: false },
             "Tony H4wk": { specie: "Lucario", form: "Omuran", sex: "Male" },
-            "Jardinier": { specie: "Ursaring", form: "Omuran", sex: "Male", main: false },
+            "Jardinier": { specie: "Ursaring", form: "Omuran", sex: "Male" },
             // THE WARUDO
-            "Dio?!": { specie: "Celebi", form: "Omuran" }
+            "Dio?!": { specie: "Celebi", form: "Omuran", icon: "Celebi" }
         },
         "Océane": {
             // Primarina -> Lana -> Lana Rain
-            "Rain": { specie: "Primarina", image: "Primarina_Mega_Empyrean" },
+            "Rain": { specie: "Primarina", battler: "Primarina_Mega_Empyrean" },
             "Maximum": { specie: "Averat", main: false },
             "Fulgur": { specie: "Machamp", form: "Omuran" },
             "Laouni": { specie: "Mienshao", form: "Omuran", main: false },
             "Mario": "Krookodile",
             "Bene": "Typhlosion",
             "Ariane": { specie: "Lucario", form: "Omuran" },
-            "Celebi": { specie: "Celebi", form: "Omuran" }
+            "Celebi": { specie: "Celebi", form: "Omuran", icon: "Celebi" }
             // + Skarm Crew and Zap as the reincarnation of the fallen ones
         }
     },
     InfiniteFusion: {
         // Charizard name : DragonFeu. True starter is Charizard
-/* Charizard */ "Toto": { specie: [ "Feraligatr", "Charizard" ], battler: "IF_Toto", main: false },
+/* Charizard */ "DragonFeu": { specie: [ "Feraligatr", "Charizard" ], battler: "IF_Toto", main: false },
         "Top%": { specie: "Rattatac", main: false, battler: "IF_Top" },
         // "King": { specie: "Nidoqueen", battler: "IF_King" }
         "Queen": { specie: "Nidoking", battler: "IF_Queen" },
         "Magic": { specie: "Alakazam", battler: "IF_Magie" },
-/* Gengar */ "Cui Cui": { specie: [ "Gengar", "Zapdos" ], battler: "IF_Cuicui" },
-/* Gengar */ "Gen2": { specie: [ "Gengar", "Mewtwo" ], battler: "IF_Gen2" },
+/* Gengar */ "Cui Cui": { specie: [ "Gengar", "Zapdos" ], battler: "IF_Cuicui", icon: "Gengar_Zapdos" },
+/* Gengar */ "Gen2": { specie: [ "Gengar", "Mewtwo" ], battler: "IF_Gen2", icon: "Gengar_Mewtwo" },
         // Her main purpose was to serve as a fusion for Brule, but Brule ended up
         // possessed by a 3rd Gengar after seeing that the Typhlosion - Ninetales
         // cooperation wasn't bringing good results
         // "Leona": { specie: "Ninetales", battler: "IF_Leona" },
         // Brule is actually Typhlosion's name.
-/* Typhlosion */ "Brule": { specie: [ "Typhlosion", "Gengar" ], battler: "IF_Brule" },
-        // (Zapdos)
-        // (Feraligatr)
-        // (Mewtwo)
-        // (Unamed Gengar)
+/* Typhlosion */ "Brule": { specie: [ "Typhlosion", "Gengar" ], battler: "IF_Brule", icon: "Typhlosion_Gengar" },
+        // (Zapdos) -> Cuicui
+        // (Feraligatr) (Toto) -> DragonFeu
+        // (Mewtwo) -> Gen2
+        // (Gengar) -> Brule
         /* Catcheur was temporarly fused to Rayquaza but it was better to actually let it alone */
         "Catcheur": { specie: "Scizor", battler: "IF_Catcheur", main: false },
-        "Kyurem": { specie: [ "Kyurem", "Reshiram", "Zekrom" ], battler: "IF_Kyurem" }
+        "Kyurem": { specie: [ "Kyurem", "Reshiram", "Zekrom" ], battler: "IF_Kyurem", icon: "Kyurem_100" }
     },
     SoulStone: {
-        "Snowball": "Feraligatr",
-        "Bzzt": "Galvantula",
-        "BugCatcher": "Parasect",
-        "Le Roi": "Nidoking",
-        // Refers to the tail
-        "Fractale": "Espeon",
-        // I wanted 5000 IQ but the Q key is glitched with control remapping.
-        "Super PC": { specie: "Metagross", battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega" }
+        Agathe: {
+            "Snowball": "Feraligatr",
+            "Bzzt": "Galvantula",
+            "BugCatcher": "Parasect",
+            "Le Roi": "Nidoking",
+            // Refers to the tail
+            "Fractale": "Espeon",
+            // I wanted 5000 IQ but the Q key is glitched with control remapping.
+            "Super PC": { specie: "Metagross", battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega" }
+        },
+        Nier: {
+            "Dragonite": { specie: "Gastrodon", form: "Gastronite", ignore_specie_name: true, icon: "Gastronite", battler: "Gastronite_Shiney" },
+            "Drampa"   : { specie: "Gastrodon", form: "Gastrampa" , ignore_specie_name: true, image: "Gastrampa"  },
+            "Haxorus"  : { specie: "Gastrodon", form: "Haxodon"   , ignore_specie_name: true, image: "Haxodon"    },
+            "Kommo-o"  : { specie: "Gastrodon", form: "Gastro-o"  , ignore_specie_name: true, image: "Gastroo"   },
+            "Hydreigon": { specie: "Gastrodon", form: "Gastreigon", ignore_specie_name: true, image: "Gastreigon" },
+            "Altaria"  : { specie: "Gastrodon", form: "Altaradon" , ignore_specie_name: true, icon: "Altaradon", battler: "Altaradon_Shiney"  }
+        }
     },
     Zero: {
         // -- Adventure
@@ -215,6 +225,17 @@ const pokemons = {
         "Fluff": "Altaria",
         // It was basically a Surf slave
         // "Jhin": "Slowking"
+    },
+    "Round": {
+        "Bowling": "Golem",
+        "Electrocute": {specie: "Magneton", family: "Magnezone" },
+        "Bouh": { specie: "Haunter", battler: "Haunter_Shiney", family: "Gengar" }
+    },
+    "Bushido": {
+        "Jungle": { specie: "Sceptile", image: "Sceptile_Bushido" },
+        "The fast": { specie: "Slowbro", form: "Galar" },
+        "Doggo": "Lucario",
+        "Mewblue": "Manaphy"
     }
 };
 
@@ -313,14 +334,15 @@ const games = [
         pokemons: pokemons.InfiniteFusion
     },
     {
-        game: "Soulstone",
-        version: "V1.0.17",
-        date: "2021-01",
+        game: "Soulstones",
         player: "Agathe",
-        path: "Soulstone_Agathe.rxdata",
+        history: [
+            { version: "V1.0.17", date: "2021-01"   , path: "Soulstone_Agathe_V1-0-17.rxdata" },
+            { version: "V1.5"   , date: "2021-02-27", path: "Soulstone_Agathe_V1-5-0.rxdata"  }
+        ],
         comments: "https://gist.github.com/SPSquonK/797d222a45987a13a2e63e087a8ca849#file-pokemonsoulstone-md",
-        living_dex: "Available - mutually exclusives",
-        pokemons: pokemons.SoulStone
+        living_dex: "Available",
+        pokemons: pokemons.SoulStone.Agathe
     },
     {
         game: "Zero",
@@ -350,5 +372,33 @@ const games = [
         comments_d: { "Bugs / Issues": "https://gist.github.com/SPSquonK/82e728a785354b196ebedbc220e5b9a6#file-pokemoncamrylegend2-md" },
         living_dex: "Final Clean Up",
         pokemons: pokemons["The Camry Legend 2"]
+    },
+    {
+        game: "Round Edition - The Redux",
+        version: "",
+        date: "2021-02",
+        player: "Cindy",
+        path: "Round_Cindy.rxdata",
+        pokemons: pokemons["Round"]
+    },
+    {
+        game: "Soulstones",
+        player: "Nier",
+        version: "V1.5"   , date: "2021-02-27/28", path: "Soulstone_Nier_V1-5-0.rxdata",
+	    comments_d: { "More": "https://gist.github.com/SPSquonK/0984052b2554cbc842a8257b5c54bbe6" },
+        pokemons: pokemons.SoulStone.Nier
+    },
+    {
+        game: "Bushido",
+        player: "Jess",
+        history: [
+
+            { version: "V1.0.15"     , date: "2021-03-20~21"   , path: "Soulstone_Agathe_V1-0-17.rxdata" },
+            { version: "V1.1.1"      , date: "2021-03-22~23"   , path: "Soulstone_Agathe_V1-5-0.rxdata"  },
+            { version: "V1.1.1-Retro", date: "2021-03-23"      , path: "Soulstone_Agathe_V1-5-0.rxdata", comment: "Difference with non retro is that I loaded my save in a former version to get Hoennian Zigzagoon" },
+            { version: "V1.1.6"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-6.rxdata"  },
+            { version: "V1.1.7"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-7.rxdata"  }
+        ],
+        pokemons: pokemons.Bushido
     }
 ];
