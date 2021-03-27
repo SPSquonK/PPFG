@@ -4,6 +4,34 @@
 // =============================================================================
 // =============================================================================
 
+function getIconOfPokemon(pkmn) {
+    let url = "";
+    if (typeof pkmn === 'string' || pkmn instanceof String) {
+        url = pkmn;
+    } else if (pkmn.icon !== undefined) {
+        url = pkmn.icon;
+    } else if (pkmn.image !== undefined) {
+        url = pkmn.image;
+    } else {
+        url = pkmn.specie;
+        if (pkmn.form !== undefined) {
+            url += "_" + pkmn.form;
+        }
+    }
+
+    return url;
+}
+
+function makeElementForSprite(spriteUrl) {
+    let sprite = document.createElement("img");
+    sprite.setAttribute("src", "icons/" + spriteUrl + ".png");
+
+    let span = document.createElement("span");
+    span.appendChild(sprite);
+    span.setAttribute("class", "sprite");
+    return span;
+}
+
 
 // Populate the list
 let list = document.getElementById("ListOfSaveFiles");
@@ -38,29 +66,8 @@ for (let game of games) {
                 
                 if (typeof pkmn === 'string' || pkmn instanceof String
                     || pkmn.main !== false) {
-                    let sprite = document.createElement("img");
-
-                    let url = "";
-                    if (typeof pkmn === 'string' || pkmn instanceof String) {
-                        url = pkmn;
-                    } else if (pkmn.icon !== undefined) {
-                        url = pkmn.icon;
-                    } else if (pkmn.image !== undefined) {
-                        url = pkmn.image;
-                    } else {
-                        url = pkmn.specie;
-                        if (pkmn.form !== undefined) {
-                            url += "_" + pkmn.form;
-                        }
-                    }
-
-                    sprite.setAttribute("src", "icons/" + url + ".png");
-                    // sprite.setAttribute("class", "sprite");
-
-                    let span = document.createElement("span");
-                    span.appendChild(sprite);
-                    span.setAttribute("class", "sprite");
-                    usedPokemons.appendChild(span);
+                    let pokemonSprite = makeElementForSprite(getIconOfPokemon(pkmn));
+                    usedPokemons.appendChild(pokemonSprite);
                 }
             }
 
@@ -130,16 +137,16 @@ for (let game of games) {
 let count = {};
 let countMergedForms = {};
 
-function addCount(name, form, family, ignore_specie_name) {
-    let addOne = (dict, n) => {
+function addCount(icon, name, form, family, ignore_specie_name) {
+    let addOne = (dict, n, icon) => {
         if (dict[n] === undefined) {
-            dict[n] = 0;
+            dict[n] = [];
         }
         
-        dict[n] += 1;
+        dict[n].push(icon);
     };
 
-    addOne(countMergedForms, family || name);
+    addOne(countMergedForms, family || name, icon);
 
     if (form !== undefined) {
         if (ignore_specie_name) {
@@ -149,7 +156,7 @@ function addCount(name, form, family, ignore_specie_name) {
         }
     }
 
-    addOne(count, name);
+    addOne(count, name, icon);
 }
 
 /** Populates the teams table with an image of every pokemon of the team */
@@ -196,13 +203,13 @@ function addTeamDict(title, team) {
 
         // Stop the count
         if (typeof pkmn === 'string' || pkmn instanceof String) {
-            addCount(pkmn);
+            addCount(getIconOfPokemon(pkmn), pkmn);
         } else if (Array.isArray(pkmn.specie)) {
             for (let subPokemon of pkmn.specie) {
-                addCount(subPokemon);
+                addCount(getIconOfPokemon(pkmn), subPokemon);
             }
         } else {
-            addCount(pkmn.specie, pkmn.form, pkmn.family, pkmn.ignore_specie_name);
+            addCount(getIconOfPokemon(pkmn), pkmn.specie, pkmn.form, pkmn.family, pkmn.ignore_specie_name);
         }
     }
 
@@ -222,9 +229,9 @@ function fillCounts() {
     
     for (let x of [arry, arry2]) {
         x.sort((a, b) => {
-            if (a[1] < b[1]) return 1;
-            if (a[1] > b[1]) return -1;
-            return a[0] < b[1];
+            if (a[1].length < b[1].length) return 1;
+            if (a[1].length > b[1].length) return -1;
+            return a[0] > b[0];
         })
     }
 
@@ -233,21 +240,32 @@ function fillCounts() {
     for (let i = 0 ; i < arry.length ; ++i) {
         let row = document.createElement("tr");
 
-        function app(x) {
+        function app(x, numberMaker) {
             let name = document.createElement("td");
             let number = document.createElement("td");
             if (i < x.length) {
                 name.appendChild(document.createTextNode(x[i][0]));
-                number.appendChild(document.createTextNode(x[i][1]));
+                number.appendChild(numberMaker(x[i][1]));
+                // number.appendChild(document.createTextNode(x[i][1].length));
             }
         
             row.appendChild(name);
             row.appendChild(number);
         }
 
-        app(arry);
+        app(arry, pkmnList => document.createTextNode(pkmnList.length));
+
         row.appendChild(document.createElement("td"));
-        app(arry2)
+
+        app(arry2,
+            pkmnList => {
+                let iconLine = document.createElement("span");
+                for (let icon of pkmnList) {
+                    iconLine.appendChild(makeElementForSprite(icon));
+                }
+                return iconLine;
+            }
+        );
         
         table.appendChild(row);
     }

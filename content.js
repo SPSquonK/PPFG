@@ -146,9 +146,17 @@ const pokemons = {
             // + Skarm Crew and Zap as the reincarnation of the fallen ones
         }
     },
+    Shield: {
+        "Cinderace": { specie: "Cinderace", battler: "Cinderace_Zero" },
+        "Rillaboom": "Rillaboom",
+        "Friday": "Blastoise",
+        "Slowbro": { specie: "Slowbro", form: "Galar" },
+        "Rapidash": { specie: "Rapidash", form: "Galar" },
+        "Shirai": "Krookodile" // Krookodile was actually a solo run
+    },
     InfiniteFusion: {
         // Charizard name : DragonFeu. True starter is Charizard
-/* Charizard */ "DragonFeu": { specie: [ "Feraligatr", "Charizard" ], battler: "IF_Toto", main: false },
+/* Charizard */ "DragonFeu": { specie: [ "Feraligatr", "Charizard" ], battler: "IF_Toto", icon: "Charizard_Feraligatr", main: false },
         "Top%": { specie: "Rattatac", main: false, battler: "IF_Top" },
         // "King": { specie: "Nidoqueen", battler: "IF_King" }
         "Queen": { specie: "Nidoking", battler: "IF_Queen" },
@@ -293,10 +301,11 @@ const games = [
         game: "Shield",
         version: "",
         date: "2020-09",
-        player: "",
+        player: "Anna",
         save_file: "",
         comments: "https://gist.github.com/SPSquonK/8935b20656865207f6860f25e31fb5d8",
-        living_dex: "New Pokemon - No Zacian but 2 Zamazenta"
+        living_dex: "New Pokemon - No Zacian but 2 Zamazenta",
+        pokemons: pokemons.Shield
     },
     {
         game: "Empyrean",
