@@ -1,4 +1,10 @@
 
+const templates = {
+    sprite: document.getElementById("template_sprite").innerHTML,
+    savehub_line: document.getElementById("template_savehub").innerHTML,
+    fullteam: document.getElementById("template_fullteam").innerHTML
+};
+
 // =============================================================================
 // =============================================================================
 // =============================================================================
@@ -23,13 +29,7 @@ function getIconOfPokemon(pkmn) {
 }
 
 function makeElementForSprite(spriteUrl) {
-    let sprite = document.createElement("img");
-    sprite.setAttribute("src", "icons/" + spriteUrl + ".png");
-
-    let span = document.createElement("span");
-    span.appendChild(sprite);
-    span.setAttribute("class", "sprite");
-    return span;
+    return Mustache.render(templates.sprite, spriteUrl);
 }
 
 
@@ -43,47 +43,25 @@ for (let game of games) {
         game.path = game.history[game.history.length - 1].path;
     }
 
-
-    let trElement = document.createElement("tr");
+    let content = {
+        team: Object.keys(game.pokemons || {})
+                .map(key => game.pokemons[key])
+                .filter(pkmn => typeof pkmn === 'string' || pkmn instanceof String || pkmn.main !== false)
+                .map(pkmn => makeElementForSprite(getIconOfPokemon(pkmn)))
+                .join(''),
+        game: game.game,
+        date: game.data,
+        version: game.version,
+        player: game.player
+    };
 
     function add(func) {
         let tdElement = document.createElement("td");
         func(tdElement);
-        trElement.appendChild(tdElement);
+        return tdElement.innerHTML;
     }
 
-    function addText(text) {
-        add(tdElement => tdElement.appendChild(document.createTextNode(text)));
-    }
-
-    {
-        let usedPokemons = document.createElement("td");
-
-        if (game.pokemons !== undefined) {
-            console.log(game.pokemons);
-            for (let pkmn_ in game.pokemons) {
-                let pkmn = game.pokemons[pkmn_];
-                
-                if (typeof pkmn === 'string' || pkmn instanceof String
-                    || pkmn.main !== false) {
-                    let pokemonSprite = makeElementForSprite(getIconOfPokemon(pkmn));
-                    usedPokemons.appendChild(pokemonSprite);
-                }
-            }
-
-        }
-
-
-        trElement.appendChild(usedPokemons);
-    }
-
-
-    addText("Pokemon " + game.game);
-    addText(game.version);
-    addText(game.date);
-    addText(game.player);
-
-    add(tdElement => {
+    content.savefile = add(tdElement => {
         if (game.path === undefined) {
             tdElement.appendChild(document.createTextNode(game.save_file));
         } else {
@@ -94,7 +72,7 @@ for (let game of games) {
         }
     })
 
-    add(tdElement => {
+    content.comment = add(tdElement => {
         if (game.comments === undefined) {
             if (game.comments_d === undefined) {
                 tdElement.appendChild(document.createTextNode(""));
@@ -121,7 +99,8 @@ for (let game of games) {
         }
     })
 
-    list.appendChild(trElement);
+    let render = Mustache.render(templates.savehub_line, content);
+    list.insertAdjacentHTML('beforeend', render);
 }
 
 
@@ -159,33 +138,6 @@ function addCount(icon, name, form, family, ignore_specie_name) {
     addOne(count, name, icon);
 }
 
-/** Populates the teams table with an image of every pokemon of the team */
-function addTeam(title, team) {
-    let table = document.getElementById("teams");
-    
-    let titleNode = document.createTextNode(title);
-    
-    let titleCell = document.createElement("th");
-    titleCell.appendChild(titleNode);
-    
-    let titleRow = document.createElement("tr");
-    titleRow.appendChild(titleCell);
-    
-    table.appendChild(titleRow);
-    
-    let teamNode = document.createElement("td");
-    
-    for (let pokemon of team) {
-        let imgElement = document.createElement("img");
-        imgElement.setAttribute('src', 'image/' + pokemon + '.png');
-        teamNode.appendChild(imgElement);
-    }
-    
-    let teamRow = document.createElement("tr");
-    teamRow.appendChild(teamNode);
-    table.appendChild(teamRow);
-}
-
 function addTeamDict(title, team) {
     let x = [];
     for (let pokemonSurname in team) {
@@ -213,7 +165,10 @@ function addTeamDict(title, team) {
         }
     }
 
-    addTeam(title, x);
+    // Populates the teams table with an image of every pokemon of the team
+    let table = document.getElementById("teams");
+    let content = Mustache.render(templates.fullteam, { title, team: x });
+    table.insertAdjacentHTML('beforeend', content);
 }
 
 function fillCounts() {
@@ -261,7 +216,7 @@ function fillCounts() {
             pkmnList => {
                 let iconLine = document.createElement("span");
                 for (let icon of pkmnList) {
-                    iconLine.appendChild(makeElementForSprite(icon));
+                    iconLine.insertAdjacentHTML('beforeend', makeElementForSprite(icon));
                 }
                 return iconLine;
             }

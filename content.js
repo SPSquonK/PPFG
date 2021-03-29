@@ -257,7 +257,8 @@ const games = [
         player: "Anna",
         path: "Reborn_Anna.rxdata",
         living_dex: "Available",
-        pokemons: pokemons.Reborn.Anna
+        pokemons: pokemons.Reborn.Anna,
+        comments: "https://gist.github.com/SPSquonK/e76abcca96ffdd6dc518525e692cd351"
     },
     {
         game: "Reborn",
@@ -408,6 +409,7 @@ const games = [
             { version: "V1.1.6"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-6.rxdata"  },
             { version: "V1.1.7"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-7.rxdata"  }
         ],
-        pokemons: pokemons.Bushido
+        pokemons: pokemons.Bushido,
+        comments: "https://gist.github.com/SPSquonK/0a329aa89ea30e3977e26155bae8fa83"
     }
 ];

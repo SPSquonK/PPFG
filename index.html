@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Sauvegardes de fangame Pokémon</title>
+		<title>SquonK's Pokemon Save Files</title>
 		<link href="style.css" rel="stylesheet">
 	</head>
 	<body>
@@ -25,14 +25,32 @@
 				first fight of the game is useless because until I can pick a
 				Pokemon and see a battle, I'm not sure that I will keep playing.
 			</p>
+
+			<!-- =========================================================== -->
+			<!-- ========================= SAVE HUB ======================== -->
 		
-			<h2>Saves hub</h2>
+			<h2>Save hub</h2>
 
 			<table id="ListOfSaveFiles">
 				<tr>
 					<th style="width: 200px;">Main</th><th>Game</th><th>Version</th><th>Date</th><th>Player</th><th>Save file</th><th>Comments</th>
 				</tr>
 			</table>
+
+			<script id="template_savehub" type="x-tmpl-mustache">
+				<tr>
+					<td>{{{team}}}      </td>
+					<td>Pokemon {{game}}</td>
+					<td>{{version}}     </td>
+					<td>{{date}}        </td>
+					<td>{{player}}      </td>
+					<td>{{{savefile}}}  </td>
+					<td>{{{comment}}}   </td>
+				</tr>
+			</script>
+	
+			<script id="template_sprite", type="x-tmpl-mustache"><span class="sprite"><img src="icons/{{.}}.png"></span></script>
+
 
 			<p style="font-style: italic;">
 			    Living dex on : Blue&White, Bushido, Insurgence (- Shadow Mewtwo), Reborn, Rejuvenation (-Magby+), Soulstone, Zero
@@ -42,9 +60,19 @@
 			<br><em>Bushido</em>: Hoennian Zigzagoon & Linoone (breed Obstagoon in V1.1.1, then breed the Galarian Zigzagoon in V1.0.15)
 			</p>
 
+			<!-- =========================================================== -->
+			<!-- ====================== USED POKEMONS ====================== -->
+
 			<h2>Used Pokemon</h2>
 			<table id="teams" style="width: 800px;">
 			</table>
+
+
+			<script id="template_fullteam" type="x-tmpl-mustache">
+				<tr><th>{{title}}</th></tr>
+				<tr><td>{{#team}}<img src="image/{{.}}.png">{{/team}}</td></tr>
+			</script>
+
 			
 			<table id="cnt">
 				<tr>
@@ -53,9 +81,12 @@
 					<th></th>
 					<th style="width: 200px;">Pokémon</th>
 					<th>Usages</th>
-					
 				</tr>
 			</table>
+
+
+			<!-- =========================================================== -->
+			<!-- ========================= SCRIPTS ========================= -->
 
 			<h2>Scripts</h2>
 
@@ -63,10 +94,38 @@
 				<p text-align: center;><em>List of scripts I use most of the time.</em></p>
 			</div>
 		</div>
-		
+
+
+		<script id="template_individual" type="x-tmpl-mustache">
+			<h2>{{name}}</h2>
+
+			<table>
+				<tr><td>Game</td> <td>{{game}}</td></tr>
+				<tr><td>Role</td> <td>{{role}}</td></tr>
+				<tr><td>Ability</td> <td>{{ability}}</td></tr>
+				<tr><td>Nature</td> <td>{{nature}}</td></tr>
+				<tr><td>EVs</td> <td>{{evs}}</td></tr>
+			</table>
+
+			<em>Moveset</em>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</script>
+
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js"
+			integrity="sha512-SDpqS2G7Z70bGQSl26nhAdQj9YJoQqMOJVBVqE1EyEaAAzdvLFNZ0R06FzBu+E8xTcmbd2dBhvBJuJrbEUiKqA=="
+			crossorigin="anonymous">
+		</script>
 		<script type="text/javascript" src="content.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-		<script src="js.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 		<script type="text/javascript" src="scripts/scripts.js"></script>
 	</body>
 </html>
