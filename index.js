@@ -10,23 +10,74 @@ const templates = {
 // =============================================================================
 // =============================================================================
 
-function getIconOfPokemon(pkmn) {
-    let url = "";
-    if (typeof pkmn === 'string' || pkmn instanceof String) {
-        url = pkmn;
-    } else if (pkmn.icon !== undefined) {
-        url = pkmn.icon;
-    } else if (pkmn.image !== undefined) {
-        url = pkmn.image;
-    } else {
-        url = pkmn.specie;
-        if (pkmn.form !== undefined) {
-            url += "_" + pkmn.form;
+class Pokemon {
+    constructor(content) {
+        this.content = content;
+
+        if (typeof content === 'string' || content instanceof String) {
+            this.main    = true;
+
+            this.icon    = content;
+            this.battler = content;
+            this.specie  = content;
+        } else {
+            this.main    = content.main !== false;
+            this.specie  = content.specie;
+
+            if (content.image !== undefined) {
+                this.icon    = content.image;
+                this.battler = content.image;
+            } else {
+                let url = content.specie;
+                if (url !== undefined && content.form !== undefined) {
+                    url += "_" + this.content.form;
+                }
+
+                this.icon = url;
+                this.battler = url;
+            }
+
+            if (content.icon !== undefined) {
+                this.icon = content.icon;
+            }
+
+            if (content.battler !== undefined) {
+                this.battler = content.battler;
+            }
         }
     }
 
-    return url;
+    isMain() { return this.main; }
+
+    toHtmlIcon() { return makeElementForSprite(this.icon); }
+
+    /**
+     * Return a list of Pokemon that composes this Pokemon
+     * Most of the time, it is this Pokemon.
+     * 
+     * "Unfuses" Kyurem, Necrozma, Calyrex and Infinite Fusion pokemons.
+     */
+    getIndividualSpecies() {
+        if (typeof this.content === 'string' || this.content instanceof String) {
+            return [this];
+        } else if (Array.isArray(this.specie)) {
+            let list = [];
+
+            for (let subPokemon of this.specie) {
+                let pkmn = {... this.content};
+                pkmn.specie = subPokemon;
+                list.push(new Pokemon(pkmn));
+            }
+
+            return list;
+        } else {
+            return [this];
+        }
+    }
+
 }
+
+
 
 function makeElementForSprite(spriteUrl) {
     return Mustache.render(templates.sprite, spriteUrl);
@@ -45,9 +96,9 @@ for (let game of games) {
 
     let content = {
         team: Object.keys(game.pokemons || {})
-                .map(key => game.pokemons[key])
-                .filter(pkmn => typeof pkmn === 'string' || pkmn instanceof String || pkmn.main !== false)
-                .map(pkmn => makeElementForSprite(getIconOfPokemon(pkmn)))
+                .map(key => new Pokemon(game.pokemons[key]))
+                .filter(pokemon => pokemon.isMain())
+                .map(pokemon => pokemon.toHtmlIcon())
                 .join(''),
         game: game.game,
         date: game.data,
@@ -141,27 +192,13 @@ function addCount(icon, name, form, family, ignore_specie_name) {
 function addTeamDict(title, team) {
     let x = [];
     for (let pokemonSurname in team) {
-        let pkmn = team[pokemonSurname];
+        let pkmn = new Pokemon(team[pokemonSurname]);
 
-        if (typeof pkmn === 'string' || pkmn instanceof String) x.push(pkmn)
-        else if (pkmn.battler !== undefined) x.push(pkmn.battler);
-        else if (pkmn.image !== undefined) x.push(pkmn.image);
-        else {
-            let name = pkmn.specie;
-            if (pkmn.form !== undefined) name += "_" + pkmn.form;
+        x.push(pkmn.battler);
 
-            x.push(name);
-        }
-
-        // Stop the count
-        if (typeof pkmn === 'string' || pkmn instanceof String) {
-            addCount(getIconOfPokemon(pkmn), pkmn);
-        } else if (Array.isArray(pkmn.specie)) {
-            for (let subPokemon of pkmn.specie) {
-                addCount(getIconOfPokemon(pkmn), subPokemon);
-            }
-        } else {
-            addCount(getIconOfPokemon(pkmn), pkmn.specie, pkmn.form, pkmn.family, pkmn.ignore_specie_name);
+        for (let specie of pkmn.getIndividualSpecies()) {
+            let c = specie.content;
+            addCount(specie.icon, specie.specie, c.form, c.family, c.ignore_specie_name);
         }
     }
 
