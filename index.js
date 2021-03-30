@@ -101,7 +101,7 @@ for (let game of games) {
                 .map(pokemon => pokemon.toHtmlIcon())
                 .join(''),
         game: game.game,
-        date: game.data,
+        date: game.date,
         version: game.version,
         player: game.player
     };
