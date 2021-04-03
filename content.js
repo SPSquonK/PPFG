@@ -347,8 +347,9 @@ const games = [
         game: "Soulstones",
         player: "Agathe",
         history: [
-            { version: "V1.0.17", date: "2021-01"   , path: "Soulstone_Agathe_V1-0-17.rxdata" },
-            { version: "V1.5"   , date: "2021-02-27", path: "Soulstone_Agathe_V1-5-0.rxdata"  }
+            { version: "V1.0.17", date: "2021-01"   , path: "Soulstones_01_Agathe_V1-0-17.rxdata" },
+            { version: "V1.5"   , date: "2021-02-27", path: "Soulstones_01_Agathe_V1-5-0.rxdata"  },
+            { version: "V1.5.3" , date: "2021-04-03", path: "Soulstones_01_Agathe_V1-5-3.rxdata"  }
         ],
         comments: "https://gist.github.com/SPSquonK/797d222a45987a13a2e63e087a8ca849#file-pokemonsoulstone-md",
         living_dex: "Available",
@@ -395,7 +396,7 @@ const games = [
     {
         game: "Soulstones",
         player: "Nier",
-        version: "V1.5"   , date: "2021-02-27/28", path: "Soulstone_Nier_V1-5-0.rxdata",
+        version: "V1.5"   , date: "2021-02-27/28", path: "Soulstones_02_Nier_V1-5-0.rxdata",
 	    comments_d: { "More": "https://gist.github.com/SPSquonK/0984052b2554cbc842a8257b5c54bbe6" },
         pokemons: pokemons.SoulStone.Nier
     },
@@ -404,11 +405,11 @@ const games = [
         player: "Jess",
         history: [
 
-            { version: "V1.0.15"     , date: "2021-03-20~21"   , path: "Soulstone_Agathe_V1-0-17.rxdata" },
-            { version: "V1.1.1"      , date: "2021-03-22~23"   , path: "Soulstone_Agathe_V1-5-0.rxdata"  },
-            { version: "V1.1.1-Retro", date: "2021-03-23"      , path: "Soulstone_Agathe_V1-5-0.rxdata", comment: "Difference with non retro is that I loaded my save in a former version to get Hoennian Zigzagoon" },
-            { version: "V1.1.6"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-6.rxdata"  },
-            { version: "V1.1.7"      , date: "2021-03-26"      , path: "Soulstone_Agathe_V1-1-7.rxdata"  }
+            { version: "V1.0.15"     , date: "2021-03-20~21"   , path: "Bushido_Jess_V1-0-17.rxdata" },
+            { version: "V1.1.1"      , date: "2021-03-22~23"   , path: "Bushido_Jess_V1-5-0.rxdata"  },
+            { version: "V1.1.1-Retro", date: "2021-03-23"      , path: "Bushido_Jess_V1-5-0.rxdata", comment: "Difference with non retro is that I loaded my save in a former version to get Hoennian Zigzagoon" },
+            { version: "V1.1.6"      , date: "2021-03-26"      , path: "Bushido_Jess_V1-1-6.rxdata"  },
+            { version: "V1.1.7"      , date: "2021-03-26"      , path: "Bushido_Jess_V1-1-7.rxdata"  }
         ],
         pokemons: pokemons.Bushido,
         comments: "https://gist.github.com/SPSquonK/0a329aa89ea30e3977e26155bae8fa83"
