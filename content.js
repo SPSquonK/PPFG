@@ -197,9 +197,28 @@ const pokemons = {
             "Hydreigon": { specie: "Gastrodon", form: "Gastreigon", ignore_specie_name: true, image: "Gastreigon" },
             "Altaria"  : { specie: "Gastrodon", form: "Altaradon" , ignore_specie_name: true, icon: "Altaradon", battler: "Altaradon_Shiney"  }
         },
-        Misc: {
-            "Cristal" : { specie: "Venusaur", form: "Epoch" }
-            // "Shiron": { specie: "Ninteales", form : "Alola" } - relevant only during 2 battles
+        Monoruns: {
+/* Lillie */    "Cristal"   : {              specie: "Venusaur"  , form: "Epoch" },                              
+/* Lillie */ // "Shiron"    : { main: false, specie: "Ninteales" , form: "Alola" }, - relevant only during 2 battles
+/* Someone */   "Fishing"   : {              specie: "Gyarados"  , form: "Epoch" },               
+/* Vivi */      "Agenoux"   : {              specie: "Alakazam"  , form: "Epoch" },           
+/* Vivi */   // "Alakazam"  : { main: false, specie: "Alakazam"  , form: "Epoch" },   
+/* Broke */     "Captain"   : {              specie: "Kingler"   , form: "Epoch" },        
+/* Broke */     "Feros"     : { main: false, specie: "Rhydon"    , familiy: "Rhyperior" },
+/* Broke */     "Toc"       : { main: false, specie: "Rhyperior"  },
+/* Erika */     "Venufather": { main: true , specie: "Venusaur"   },
+/* Erika */     "LE SOLEIL" : { main: true , specie: "Victreebel", battler: "Victreebel_Mega_Soulstones", icon: "Victreebel_Mega_Soulstones" },
+/* Erika */     "Venuson"   : { main: false, specie: "Venusaur"   },
+/* Claire */    "Minidraco" : { main: true , specie: "Gastrodon" , form: "Gastronite", ignore_specie_name: true, icon: "Gastronite", battler: "Gastronite" },
+/* Claire */    "Hyporeine" : { main: false, specie: "Kingdra"    },
+/* Zerus */     "Coxy"      : { main: true , specie: "Ledian"     },
+/* Zerus */     "Beurre III": {              specie: "Butterfree" },
+/* Zerus */     "4 Heures"  : { main: false, specie: "Scyther"   , family: "Scizor" },
+/* Acerola */   "Blondie?!" : { main: true , specie: "Rapidash"  , form: "Epoch" },
+/* Acerola */   ":("        : { main: false, specie: "Chandelure" },
+/* Acerola */   ":>"        : { main: true , specie: "Dusknoir"  , form: "Epoch" },
+/* SquonK */    "M E T A"   : {              specie: "Metagross" , battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega" },
+/* SquonK */ // "Beldum"    : { main: false, specie: "Beldum" }
         }
     },
     Zero: {
@@ -418,5 +437,13 @@ const games = [
         ],
         pokemons: pokemons.Bushido,
         comments: "https://gist.github.com/SPSquonK/0a329aa89ea30e3977e26155bae8fa83"
+    },
+    {
+        game: "Soulstones",
+        player: "Multiple",
+        version: "V1.5.3-4",
+        date: "2021-04",
+        pokemons: pokemons.SoulStone.Monoruns,
+        path: "Soulstones/monoruns.html"
     }
 ];
