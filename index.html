@@ -53,7 +53,7 @@
 
 
 			<p style="font-style: italic;">
-			    Living dex on : Blue&White, Bushido, Insurgence (- Shadow Mewtwo), Reborn, Rejuvenation (-Magby+), Soulstone, Zero
+			    Living dex on : Blue&White, Bushido, Insurgence (- Shadow Mewtwo), Reborn, Rejuvenation (-Magby+), Solar Light & Lunar Dark, Soulstone, Zero
 			<!-- <br>I won't build a living dex on: Empyrean (most are only available in auctions + Pokedex is polluted by uncatachable Pokemon), Infinite Fusion (PokemonStorage lags too much) -->
 			<br><br><strong>Weird entries I got:</strong>
 			<br><em>Blue&White</em>: Sanshrew & Sandslash (breed Sandspike), Cubone & Marowack (breed Cuewack)
@@ -99,12 +99,17 @@
 		<script id="template_individual" type="x-tmpl-mustache">
 			<h2>{{name}}</h2>
 
+			<h3>{{specie}} {{region}}</h3>
+
 			<table>
 				<tr><td>Game</td> <td>{{game}}</td></tr>
 				<tr><td>Role</td> <td>{{role}}</td></tr>
 				<tr><td>Ability</td> <td>{{ability}}</td></tr>
 				<tr><td>Nature</td> <td>{{nature}}</td></tr>
 				<tr><td>EVs</td> <td>{{evs}}</td></tr>
+				{{#caught}}
+					<tr><td>Caught</td> <td>{{.}}</td></tr>
+				{{/caught}}
 			</table>
 
 			<em>Moveset</em>
