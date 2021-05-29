@@ -219,6 +219,31 @@ const pokemons = {
 /* Acerola */   ":>"        : { main: true , specie: "Dusknoir"  , form: "Epoch" },
 /* SquonK */    "M E T A"   : {              specie: "Metagross" , battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega" },
 /* SquonK */ // "Beldum"    : { main: false, specie: "Beldum" }
+        },
+        Kathleen: {
+            "Metagross": "Metagross" , "Smeargle": "Smeargle"
+        },
+        KaineWest: {
+            // Trainer name:
+            // - It's my first (and probably only) savefile started in V2.0.0
+            // / Season 3. The name is a reference to my first save file in
+            // V1.5 / Season 2: Nier. Kaine is one of the companion of Nier
+            // - Obviously a pun with Kanye West
+
+            // Typhlosion learns Inferno -> Hell -> The Hell Song -> Sum 41
+            "Four Thx I": { specie: "Typhlosion", image: "Typhlosion_Mega_Soulstones" },
+            // ...
+            "Knuckles"  : { specie: "Excadrill"                                       },
+            // I somehow decided to refer to this group of 3 Magnemites as Magnemites (in french)
+            "Magnétis"  : { specie: "Magneton"                                        },
+            // MEEEEEGAAAAAAAAAA
+            "Méga"      : { specie: "Metagross" , battler: "Metagross_Mega_Soulstone", icon: "Metagross_Mega"},
+            // Marlène Schiappa
+            "Marlène"   : { specie: "Ampharos"  , main: false              },
+            // Noctali is Umbreon's french name, it is also the surname of Noctis in FF15
+            "Noc"       : { specie: "Umbreon"                              },
+            // Sounds like a dragon cry, mostly a reference to Sieur PC's stream
+            "Agrougrou" : { specie: "Charizard", image: "Charizard_Mega_Y" }
         }
     },
     Zero: {
@@ -461,5 +486,13 @@ const games = [
         date: "2021-04-17/18",
         pokemons: pokemons.SolarLight,
         path: "SolarLight.rxdata"
-    }
+    },
+    {
+        game: "Soulstones",
+        player: "Kaine West",
+        version: "V2.0.0-1",
+        date: "2021-05",
+        pokemons: pokemons.SoulStone.KaineWest,
+        path: "Soulstones/Soulstones_19_KaineWest_V2_0_1.rxdata"
+    },
 ];

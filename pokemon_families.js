@@ -85,6 +85,7 @@ let families = {
     "Hydreigon": "Deino",
     "Zebstrika": "Blitzle",
     "Swoobat": "Woobat",
+    "Excadrill": "Drilbur",
 
     // Gen 6
     "Delphox": "Fennekin",
