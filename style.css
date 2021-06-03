@@ -1,0 +1,63 @@
+body {
+    max-width: 60em;
+    margin: auto;
+    background-color: white;
+}
+
+#main {
+    background-color:whitesmoke;
+    padding: 0.5em;
+}
+
+h1 {
+    text-align: center;
+    font-variant: small-caps;
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: darkred;
+    color: white;
+    border-radius: 2em;
+    max-width: 20em;
+    font-variant: small-caps;
+}
+
+.sprite {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: left;
+}
+
+.sprite img {
+    position:absolute;
+    clip:rect(0px,32px,32px,0px);
+    width: 64px;
+    height: 32px;
+}
+
+#teams { margin: auto; }
+#teams th { background-color: black; color : white; }
+#teams td { background-color: white; }
+table#teams, table#teams tr, table#teams th, table#teams td { border: 1px black solid; border-collapse: collapse; text-align: center;}
+
+#cnt { margin: auto; border: 1px black solid; text-align: center;}
+
+table#ListOfSaveFiles, table#ListOfSaveFiles tr {
+    text-align: center;
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+
+table#ListOfSaveFiles {
+    margin: auto;
+}
+
+div#scripts_section  {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
