@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SquonK's Pokemon Save Files</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="main">
+			<h1>Pokémon Fan Games played by SquonK</h1>
+
+			<h2>Criteria for a playable fan game</h2>
+
+			<p>My main criteria to play a game are the following:</p>
+			<ul>
+				<li>Editable: I won't play if I can't apply some QOL changes (visible Hidden Items, every Pokemon have the pickup ability, remap keys, Gen 6 Share Exp...).</li>
+				<li>Gen 3 battle layout: Other battle layouts are too slow</li>
+				<li>Speedup feature: Pokemon games are slow so the speed up feature is vital. Note that if the game is editable, I can add myself the speedup feature.</li>
+				<li>Finished and/or with enough accessible content: I won't play 1 hour long demo</li>
+				<li>A regular Pokemon game: So not Mystery Dungeon, not a game that uses the Pokemon universe to propose a different type of game</li>
+			</ul>
+
+			<p>
+				It's also better if you let me play quickly. Exposure before the
+				first fight of the game is useless because until I can pick a
+				Pokemon and see a battle, I'm not sure that I will keep playing.
+			</p>
+
+			<!-- =========================================================== -->
+			<!-- ========================= SAVE HUB ======================== -->
+		
+			<h2>Save hub</h2>
+
+			<table id="ListOfSaveFiles">
+				<tr>
+					<th style="width: 200px;">Main</th><th>Game</th><th>Version</th><th>Date</th><th>Player</th><th>Save file</th><th>Comments</th>
+				</tr>
+			</table>
+
+			<script id="template_savehub" type="x-tmpl-mustache">
+				<tr>
+					<td>{{{team}}}      </td>
+					<td>Pokemon {{game}}</td>
+					<td>{{version}}     </td>
+					<td>{{date}}        </td>
+					<td>{{player}}      </td>
+					<td>{{{savefile}}}  </td>
+					<td>{{{comment}}}   </td>
+				</tr>
+			</script>
+	
+			<script id="template_sprite", type="x-tmpl-mustache"><span class="sprite"><img src="icons/{{.}}.png"></span></script>
+
+
+			<p style="font-style: italic;">
+			    Living dex on : Blue&White, Bushido, Insurgence (- Shadow Mewtwo), Reborn, Rejuvenation (-Magby+), Solar Light & Lunar Dark, Soulstone, Zero
+			<!-- <br>I won't build a living dex on: Empyrean (most are only available in auctions + Pokedex is polluted by uncatachable Pokemon), Infinite Fusion (PokemonStorage lags too much) -->
+			<br><br><strong>Weird entries I got:</strong>
+			<br><em>Blue&White</em>: Sanshrew & Sandslash (breed Sandspike), Cubone & Marowack (breed Cuewack)
+			<br><em>Bushido</em>: Hoennian Zigzagoon & Linoone (breed Obstagoon in V1.1.1, then breed the Galarian Zigzagoon in V1.0.15)
+			</p>
+
+			<!-- =========================================================== -->
+			<!-- ====================== USED POKEMONS ====================== -->
+
+			<h2>Used Pokemon</h2>
+			<table id="teams" style="width: 800px;">
+			</table>
+
+
+			<script id="template_fullteam" type="x-tmpl-mustache">
+				<tr><th>{{title}}</th></tr>
+				<tr><td>{{#team}}<img src="image/{{.}}.png">{{/team}}</td></tr>
+			</script>
+
+			
+			<table id="cnt">
+				<tr>
+					<th style="width: 200px;">Pokémon + Form</th>
+					<th>Usages</th>
+					<th></th>
+					<th style="width: 200px;">Pokémon</th>
+					<th>Usages</th>
+				</tr>
+			</table>
+
+
+			<!-- =========================================================== -->
+			<!-- ========================= SCRIPTS ========================= -->
+
+			<h2>Scripts</h2>
+
+			<div id="scripts_section">
+				<p text-align: center;><em>List of scripts I use most of the time.</em></p>
+			</div>
+		</div>
+
+
+		<script id="template_individual" type="x-tmpl-mustache">
+			<h2>{{name}}</h2>
+
+			<h3>{{specie}} {{region}}</h3>
+
+			<table>
+				<tr><td>Game</td> <td>{{game}}</td></tr>
+				<tr><td>Role</td> <td>{{role}}</td></tr>
+				<tr><td>Ability</td> <td>{{ability}}</td></tr>
+				<tr><td>Nature</td> <td>{{nature}}</td></tr>
+				<tr><td>EVs</td> <td>{{evs}}</td></tr>
+				{{#caught}}
+					<tr><td>Caught</td> <td>{{.}}</td></tr>
+				{{/caught}}
+			</table>
+
+			<em>Moveset</em>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</script>
+
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js"
+			integrity="sha512-SDpqS2G7Z70bGQSl26nhAdQj9YJoQqMOJVBVqE1EyEaAAzdvLFNZ0R06FzBu+E8xTcmbd2dBhvBJuJrbEUiKqA=="
+			crossorigin="anonymous">
+		</script>
+		<script type="text/javascript" src="pokemon_families.js"></script>
+		<script type="text/javascript" src="content.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+		<script type="text/javascript" src="scripts/scripts.js"></script>
+	</body>
+</html>

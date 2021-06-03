@@ -1,0 +1,191 @@
+
+// -- Search pbPickup (in PField_Field)
+// Remove two first lines
+// Remove
+
+pokemon.setItem(items[i])
+// Add
+$PokemonBag.pbStoreItem(items[i])
+
+// Eventually alter the table:
+// Potion -> Super Potion
+// Antidote -> Full Heal
+
+// Auto Gen 6 multi exp: because without it, I would play with only 1 Pokemon
+// -- Search def pbGainEXP
+haveexpall=true
+// -- Search NOSPLITEXP
+NOSPLITEXP            = true
+
+
+// -- Key binds
+// def self.buttonToKey(button)
+
+        when Input::DOWN; return [0x53]
+        when Input::LEFT; return [0x51]
+        when Input::RIGHT; return [0x44]
+        when Input::UP; return [0x5A]
+
+        when Input::A; return [0x41]
+        when Input::B; return [0x62]
+        when Input::C; return [0x61, 0x0D]
+
+        when Input::X; return [0x55]
+        when Input::Y; return [0x49]
+        when Input::Z; return [0x4F]
+
+        when Input::L; return [0x67]
+        when Input::R; return [0x64]
+        when Input::SHIFT; return [0x10]
+        when Input::CTRL; return [0x68]
+        when Input::ALT; return [0x69]
+
+
+// -- Repels
+// Repels are infinite, not cousumed, and their effect is to make Pokemon
+// species that were already catched appears (idea from Reborn SWM)
+
+class PokemonEncounters
+  def pbEncounteredPokemon(enctype,tries=1)
+    if enctype<0 || enctype>EncounterTypes::EnctypeChances.length
+      raise ArgumentError.new(_INTL("Encounter type out of range"))
+    end
+    return nil if @enctypes[enctype]==nil
+    encounters=@enctypes[enctype]
+    chances = []
+    
+    chancetotal = 0
+    for i in 0...encounters.length
+      pushZero = $PokemonGlobal.repel>0 && $Trainer.owned[encounters[i][0]]
+      
+      if pushZero or i >= EncounterTypes::EnctypeChances[enctype].length
+        chances.push(0)
+      else
+        chances.push(EncounterTypes::EnctypeChances[enctype][i])
+        chancetotal += EncounterTypes::EnctypeChances[enctype][i]
+      end
+    end
+    if chancetotal == 0
+      return nil
+    end
+    
+    rnd=0
+    tries.times do
+      r=rand(chancetotal)
+      rnd=r if rnd<r
+    end
+    chosenpkmn=0
+    chance=0
+    for i in 0...chances.length
+      chance += chances[i]
+      if rnd<chance
+        chosenpkmn=i
+        break
+      end
+    end
+    
+    if chosenpkmn == chances.length
+      return nil
+    end
+    
+    encounter=encounters[chosenpkmn]
+    return nil if !encounter
+    level=encounter[1]+rand(1+encounter[2]-encounter[1])
+
+    return [encounter[0],level]
+  end
+
+  def pbCanEncounter?(encounter)
+    return false if $game_system.encounter_disabled
+    return false if !encounter || !$Trainer
+    return false if $DEBUG && Input.press?(Input::CTRL)
+    return true
+  end
+end
+
+
+def pbRepel(item,steps)
+    if $PokemonGlobal.repel>0
+      Kernel.pbMessage(_INTL("Repel has been canceled"))
+      $PokemonGlobal.repel=0
+      return 0
+    else
+      Kernel.pbMessage(_INTL("{1} used the {2}.",$Trainer.name,PBItems.getName(item)))
+      $PokemonGlobal.repel=99999999
+      return 0
+    end
+end
+
+
+// Pokemon storage
+// find commands[cmdDebug=commands.length]    = _INTL("Debug") if $DEBUG
+// remove if $DEBUG
+// Search "Randomise all"
+                pkmn.iv[0]=31
+                pkmn.iv[1]=31
+                pkmn.iv[2]=31
+                pkmn.iv[3]=31
+                pkmn.iv[4]=31
+                pkmn.iv[5]=31
+                pkmn.ev[0]=0
+                pkmn.ev[1]=0
+                pkmn.ev[2]=0
+                pkmn.ev[3]=0
+                pkmn.ev[4]=0
+                pkmn.ev[5]=0
+
+
+// Search "Change which EV?"
+                if f == 1:
+                  f = PokeBattle_Pokemon::EVSTATLIMIT
+                end
+
+
+// -- Shift
+
+// If this function is called, every pokemon will be shifted from one slot
+// to the right, until box 45. Pokemon 30 in box 44 will be erased
+// (why thought? It could be just held...)
+//
+// Developped to be able to place new Epoch forms in Pokemon Soulstone. It
+// happens to be both more convenient than multiselect and easier to integrate
+class PokemonStorageScreen
+  def pbShift(selected)
+      box=selected[0]
+      index=selected[1]
+      
+      if box==-1
+        return
+      end
+      
+      while box < 45
+        # Pokemon at this place
+        toPlace = @storage[box,index]
+        
+        if @heldpkmn != nil:
+          @heldpkmn.heal
+          @heldpkmn.formTime=nil if @heldpkmn.respond_to?("formTime") && @heldpkmn.formTime
+        end
+        # Put the currently held
+        @storage[box,index]=@heldpkmn
+          
+        # Held is the one that was here
+        @heldpkmn = toPlace
+        
+        index = index + 1
+        
+        if index == 30
+          box = box + 1
+          index = 0
+        end
+      end
+      
+      @heldpkmn = nil
+      @scene.pbRefresh
+      @scene.pbHardRefresh
+    end
+end
+
+
+// I hate mining 
+// TODO
