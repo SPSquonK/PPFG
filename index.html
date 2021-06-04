@@ -46,10 +46,6 @@
 				</tr>
 			</table>
 	
-			<!--
-			<script id="template_sprite", type="x-tmpl-mustache"></script>
-			-->
-
 
 			<p style="font-style: italic;">
 			    Living dex on : Blue&White, Bushido, Insurgence (- Shadow Mewtwo), Reborn, Rejuvenation (-Magby+), Solar Light & Lunar Dark, Soulstone, Zero
@@ -64,21 +60,37 @@
 
 			<h2>Used Pokemon</h2>
 			<table id="teams" style="width: 800px;">
-
 				<tbody v-for="team in teams">
 					<tr><th>{{team.title}}</th></tr>
 					<tr><td><img v-for="member in team.party" v-bind:src="'image/' + member + '.png'"></td></tr> <!-- image/{{.}}.png -->
 				</tbody>
-
 			</table>
 			
-			<table id="cnt">
+
+			<div style="margin-top: 2em; text-align: center;">
+				<em>Group by: </em>
+				<input
+					type="radio" name="usage" id="ind_form"   value="ind_form"
+					v-model="counttype" v-on:change="countChange"
+				><label for="ind_form"> Form</label>
+				<input
+					type="radio" name="usage" id="ind_specie" value="ind_specie"
+					v-model="counttype" v-on:change="countChange" checked
+				><label for="ind_specie"> Family</label>
+			</div>
+
+			<table id="cnt" v-if="speciecount">
 				<tr>
-					<th style="width: 200px;">Pokémon + Form</th>
-					<th>Usages</th>
-					<th></th>
-					<th style="width: 200px;">Pokémon</th>
-					<th>Usages</th>
+					<th style="width: 200px;">Name</th>
+					<th style="width: 30px;">Count</th>
+					<th>Individuals</th>
+				</tr>
+				<tr v-for="oneCount in speciecount">
+					<td>{{ oneCount.name }}</td>
+					<td>{{ oneCount.individuals.length }}</td>
+					<td>
+						<span v-for="individual in oneCount.individuals" v-html="spriteFor(individual)"></span>
+					</td>
 				</tr>
 			</table>
 
@@ -89,7 +101,7 @@
 			<h2>Scripts</h2>
 
 			<div id="scripts_section">
-				<p text-align: "center;"><em>List of scripts I use most of the time.</em></p>
+				<p style="text-align: center;"><em>List of scripts I use most of the time.</em></p>
 			</div>
 		</div>
 

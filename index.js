@@ -1,13 +1,37 @@
 
+
+function makeElementForSprite(spriteUrl) {
+    return `<span class="sprite"><img src="icons/${spriteUrl}.png"></span>`;
+}
+
+let cachedContent = {
+};
+
 let app = new Vue({
     el: "#main",
     data: {
         savefiles: [],
-        teams: []
+        teams: [],
+        speciecount: [],
+        counttype: "ind_specie"
     },
     methods: {
         addSavefile: function(savefile) { this.savefiles.push(savefile); },
-        addTeam: function(team) { this.teams.push(team); }
+        addTeam: function(team) { this.teams.push(team); },
+        spriteFor: function(pokemon) {
+            if (typeof pokemon === 'string') return this.spriteFor({ icon: pokemon });
+            return makeElementForSprite(pokemon.icon);
+        },
+
+        countChange: function() {
+            if (this.counttype === 'ind_form') {
+                this.speciecount = cachedContent.forms;
+            } else if (this.counttype === 'ind_specie') {
+                this.speciecount = cachedContent.families;
+            } else {
+                this.speciecount = [];
+            }
+        }
     }
 });
 
@@ -85,9 +109,6 @@ class Pokemon {
 
 
 
-function makeElementForSprite(spriteUrl) {
-    return `<span class="sprite"><img src="icons/${spriteUrl}.png"></span>`;
-}
 
 
 // Populate the list
@@ -219,59 +240,23 @@ function addTeamDict(title, team) {
 }
 
 function fillCounts() {
-    let arry = [];
-    let arry2 = [];
-    
-    for (let pokemon in count) {
-        arry.push([pokemon, count[pokemon]]);
-    }
-    for (let pokemon in countMergedForms) {
-        arry2.push([pokemon, countMergedForms[pokemon]]);
-    }
-    
-    for (let x of [arry, arry2]) {
-        x.sort((a, b) => {
+
+    function _(count) {
+        let pokemons = Object.entries(count);
+
+        pokemons.sort((a, b) => {
             if (a[1].length < b[1].length) return 1;
             if (a[1].length > b[1].length) return -1;
             return a[0] > b[0];
         })
+
+        return pokemons.map(pkmn => { return { name: pkmn[0], individuals: pkmn[1] };});
     }
 
-    let table = document.getElementById("cnt");
+    cachedContent.forms = _(count);
+    cachedContent.families = _(countMergedForms);
 
-    for (let i = 0 ; i < arry.length ; ++i) {
-        let row = document.createElement("tr");
-
-        function app(x, numberMaker) {
-            let name = document.createElement("td");
-            let number = document.createElement("td");
-            if (i < x.length) {
-                name.appendChild(document.createTextNode(x[i][0]));
-                number.appendChild(numberMaker(x[i][1]));
-                // number.appendChild(document.createTextNode(x[i][1].length));
-            }
-        
-            row.appendChild(name);
-            row.appendChild(number);
-        }
-
-        app(arry, pkmnList => document.createTextNode(pkmnList.length));
-
-        row.appendChild(document.createElement("td"));
-
-        app(arry2,
-            pkmnList => {
-                let iconLine = document.createElement("span");
-                for (let icon of pkmnList) {
-                    iconLine.insertAdjacentHTML('beforeend', makeElementForSprite(icon));
-                }
-                return iconLine;
-            }
-        );
-        
-        table.appendChild(row);
-    }
-    
+    app.countChange();
 }
 
 function main() {
