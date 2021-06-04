@@ -35,21 +35,20 @@
 				<tr>
 					<th style="width: 200px;">Main</th><th>Game</th><th>Version</th><th>Date</th><th>Player</th><th>Save file</th><th>Comments</th>
 				</tr>
-			</table>
-
-			<script id="template_savehub" type="x-tmpl-mustache">
-				<tr>
-					<td>{{{team}}}      </td>
-					<td>Pokemon {{game}}</td>
-					<td>{{version}}     </td>
-					<td>{{date}}        </td>
-					<td>{{player}}      </td>
-					<td>{{{savefile}}}  </td>
-					<td>{{{comment}}}   </td>
+				<tr v-for="savefile in savefiles">
+					<td v-html="savefile.team"></td>
+					<td>Pokemon {{savefile.game}}</td>
+					<td>{{savefile.version}}     </td>
+					<td>{{savefile.date}}        </td>
+					<td>{{savefile.player}}      </td>
+					<td v-html="savefile.savefile"></td>
+					<td v-html="savefile.comment"></td>
 				</tr>
-			</script>
+			</table>
 	
-			<script id="template_sprite", type="x-tmpl-mustache"><span class="sprite"><img src="icons/{{.}}.png"></span></script>
+			<!--
+			<script id="template_sprite", type="x-tmpl-mustache"></script>
+			-->
 
 
 			<p style="font-style: italic;">
@@ -65,14 +64,13 @@
 
 			<h2>Used Pokemon</h2>
 			<table id="teams" style="width: 800px;">
+
+				<tbody v-for="team in teams">
+					<tr><th>{{team.title}}</th></tr>
+					<tr><td><img v-for="member in team.party" v-bind:src="'image/' + member + '.png'"></td></tr> <!-- image/{{.}}.png -->
+				</tbody>
+
 			</table>
-
-
-			<script id="template_fullteam" type="x-tmpl-mustache">
-				<tr><th>{{title}}</th></tr>
-				<tr><td>{{#team}}<img src="image/{{.}}.png">{{/team}}</td></tr>
-			</script>
-
 			
 			<table id="cnt">
 				<tr>
@@ -91,7 +89,7 @@
 			<h2>Scripts</h2>
 
 			<div id="scripts_section">
-				<p text-align: center;><em>List of scripts I use most of the time.</em></p>
+				<p text-align: "center;"><em>List of scripts I use most of the time.</em></p>
 			</div>
 		</div>
 
@@ -122,11 +120,8 @@
 		</script>
 
 
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js"
-			integrity="sha512-SDpqS2G7Z70bGQSl26nhAdQj9YJoQqMOJVBVqE1EyEaAAzdvLFNZ0R06FzBu+E8xTcmbd2dBhvBJuJrbEUiKqA=="
-			crossorigin="anonymous">
-		</script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
 		<script type="text/javascript" src="pokemon_families.js"></script>
 		<script type="text/javascript" src="content.js"></script>
 		<script type="text/javascript" src="index.js"></script>

@@ -1,9 +1,15 @@
 
-const templates = {
-    sprite: document.getElementById("template_sprite").innerHTML,
-    savehub_line: document.getElementById("template_savehub").innerHTML,
-    fullteam: document.getElementById("template_fullteam").innerHTML
-};
+let app = new Vue({
+    el: "#main",
+    data: {
+        savefiles: [],
+        teams: []
+    },
+    methods: {
+        addSavefile: function(savefile) { this.savefiles.push(savefile); },
+        addTeam: function(team) { this.teams.push(team); }
+    }
+});
 
 // =============================================================================
 // =============================================================================
@@ -80,12 +86,11 @@ class Pokemon {
 
 
 function makeElementForSprite(spriteUrl) {
-    return Mustache.render(templates.sprite, spriteUrl);
+    return `<span class="sprite"><img src="icons/${spriteUrl}.png"></span>`;
 }
 
 
 // Populate the list
-let list = document.getElementById("ListOfSaveFiles");
 
 for (let game of games) {
     if (game.history !== undefined) {
@@ -150,8 +155,7 @@ for (let game of games) {
         }
     })
 
-    let render = Mustache.render(templates.savehub_line, content);
-    list.insertAdjacentHTML('beforeend', render);
+    app.addSavefile(content);
 }
 
 
@@ -211,9 +215,7 @@ function addTeamDict(title, team) {
     }
 
     // Populates the teams table with an image of every pokemon of the team
-    let table = document.getElementById("teams");
-    let content = Mustache.render(templates.fullteam, { title, team: x });
-    table.insertAdjacentHTML('beforeend', content);
+    app.addTeam({ title, party: x })
 }
 
 function fillCounts() {
