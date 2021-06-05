@@ -103,31 +103,43 @@ function main() {
                 return;
             }
 
-            let iconPath = path.join(icons, "icon" + answers.number + ".png");
-            if (!fs.existsSync(iconPath)) {
-                let pass = false;
-                if (answers.number[answers.number.length - 1] === "s") {
-                    answers.number = answers.number.substr(0, answers.number.length - 1);
-                    pass = true;
-                }
+            let failed = [];
+            let iconPath = testIconName(icons, answers.number, failed);
 
-                let without_ = answers.number.indexOf("_");
-                if (without_ === -1 && !pass) {
-                    console.log(iconPath + " does not exist");
-                    return;
-                }
-
-                const oldPath = iconPath;
-
-                let newNumber = answers.number.substr(0, without_ !== -1 ? without_ : answers.number.length);
-                iconPath = path.join(icons, "icon" + newNumber + ".png");
-                if (!fs.existsSync(iconPath)) {
-                    console.log(oldPath + " does not exist");
-                    console.log(iconPath + " does not exist");
-                    return;
+            let formNumberIfRemoved = null;
+            if (iconPath === null) {
+                // Try removing form number
+                let positionOf_ = answers.number.indexOf("_");
+                if (positionOf_ !== -1) {
+                    formNumberIfRemoved = answers.number.substr(positionOf_);
+                    answers.number = answers.number.substr(0, positionOf_);
+                    iconPath = testIconName(icons, answers.number, failed);
                 }
             }
 
+            if (iconPath === null) {
+                // Try removing shiny
+                if (answers.number[answers.number.length - 1] === "s") {
+                    answers.number = answers.number.substr(0, answers.number.length - 1);
+                    
+                    let comeBack = answers.number;
+                    if (formNumberIfRemoved !== null) {
+                        answers.number = answers.number + formNumberIfRemoved;
+                        iconPath = testIconName(icons, answers.number, failed);
+                    }
+
+                    if (iconPath === null) {
+                        answers.number = comeBack;
+                        iconPath = testIconName(icons, answers.number, failed);
+                    }
+                }
+            }
+
+            if (iconPath === null) {
+                failed.forEach(path => console.log(path + " does not exist"));
+                return;
+            }
+            
             console.log("= " + answers.name);
             console.log(battlerPath);
             console.log(iconPath);
@@ -135,23 +147,35 @@ function main() {
             spritesheetMaker(
                 spritesheetBattler.path, spritesheetJson, "battler",
                 battlerPath, gamename + "/" + answers.name,
-                spritesheetBattler.size,
-                128,
-                2
+                spritesheetBattler.size, 128, 2
             );
             
             spritesheetMaker(
                 spritesheetIcon.path   , spritesheetJson, "icon",
                 iconPath   , gamename + "/" + answers.name,
-                spritesheetIcon.size   , 64, 1
+                spritesheetIcon.size   ,  64, 1
             );
         })
         .catch(err => console.error(err))
         .finally(() => spritesheetCompleterHandler(gamename, battlers, icons));
     }
 
+    function testIconName(iconFolder, iconName, tried) {
+        let iconPath = path.join(iconFolder, "icon" + iconName + ".png");
+        if (fs.existsSync(iconPath)) {
+            return iconPath;
+        }
+
+        if (tried.find(x => x === iconName) === undefined) {
+            tried.push(iconPath);
+        }
+
+        return null;
+    }
+
     mainMenu();
 }
+
 
 if (require.main === module) {
     main();

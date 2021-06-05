@@ -5,6 +5,7 @@ let families = {
     "Blastoise": "Squirtle",
     "Rapidash": "Ponyta",
     "Spectrum": "Gastly",
+    "Haunter": "Gastly",
     "Gengar": "Gastly",
     "Alakazam": "Abra",
     "Nidoking": "Nidoran",

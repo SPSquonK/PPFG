@@ -223,8 +223,8 @@ function completeSpritesheet(
 
     existingSprites[imageName][categoryName] = {
         slot: imageIn,
-        width: toAdd.width,
-        height: toAdd.height
+        width: Math.min(toAdd.width, slotSize),
+        height: Math.min(toAdd.height, slotSize)
     };
 
     const result = new PNG({

@@ -8,6 +8,11 @@
       "slot": 0,
       "width": 128,
       "height": 64
+    },
+    "battler": {
+      "slot": 0,
+      "width": 96,
+      "height": 96
     }
   },
   "Reborn/Swoobat": {
@@ -571,6 +576,1158 @@
     "icon": {
       "slot": 43,
       "width": 128,
+      "height": 64
+    }
+  },
+  "Zero/Cinderace": {
+    "battler": {
+      "slot": 42,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 44,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Rillaboom": {
+    "battler": {
+      "slot": 43,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 45,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Blastoise": {
+    "battler": {
+      "slot": 44,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 46,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Slowbro-Galar": {
+    "battler": {
+      "slot": 45,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 47,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Rapidash": {
+    "battler": {
+      "slot": 46,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 48,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Rapidash-Galar": {
+    "battler": {
+      "slot": 47,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 49,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Zero/Krookodile": {
+    "battler": {
+      "slot": 48,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 50,
+      "width": 80,
+      "height": 60
+    }
+  },
+  "Empyrean/Delphox-Mega": {
+    "battler": {
+      "slot": 49,
+      "width": 105,
+      "height": 90
+    },
+    "icon": {
+      "slot": 51,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Swellow-Omuran": {
+    "battler": {
+      "slot": 50,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 52,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Honchkrow-Omuran": {
+    "battler": {
+      "slot": 51,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 53,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Goodra": {
+    "battler": {
+      "slot": 52,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 54,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Lucario-Omuran": {
+    "battler": {
+      "slot": 53,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 55,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Ursaring-Omuran": {
+    "battler": {
+      "slot": 54,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 56,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Celebi-Dark": {
+    "battler": {
+      "slot": 55,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 57,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Primarina-Mega": {
+    "battler": {
+      "slot": 56,
+      "width": 90,
+      "height": 90
+    },
+    "icon": {
+      "slot": 58,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Averat": {
+    "battler": {
+      "slot": 57,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 59,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Machamp-Omuran": {
+    "battler": {
+      "slot": 58,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 60,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Mienshao-Omuran": {
+    "battler": {
+      "slot": 59,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 61,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Krookodile": {
+    "battler": {
+      "slot": 60,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 62,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Empyrean/Typhlosion": {
+    "battler": {
+      "slot": 61,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 6,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Charizard+Feraligatr": {
+    "icon": {
+      "slot": 63,
+      "width": 124,
+      "height": 64
+    },
+    "battler": {
+      "slot": 62,
+      "width": 96,
+      "height": 96
+    }
+  },
+  "Infinite Fusion/Raticate": {
+    "battler": {
+      "slot": 63,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 64,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Nidoking": {
+    "battler": {
+      "slot": 64,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 25,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Alakazam": {
+    "battler": {
+      "slot": 65,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 65,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Gengar+Zapdos": {
+    "battler": {
+      "slot": 66,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 66,
+      "width": 124,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Gengar+Mewtwo": {
+    "battler": {
+      "slot": 67,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 67,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Gengar+Typhlosion": {
+    "battler": {
+      "slot": 68,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 68,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Scizor": {
+    "battler": {
+      "slot": 69,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 69,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Infinite Fusion/Kyurem-Complete": {
+    "battler": {
+      "slot": 70,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 70,
+      "width": 128,
+      "height": 64
+    }
+  },
+  "Soulstones/Feraligatr": {
+    "battler": {
+      "slot": 71,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 71,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Galvantula": {
+    "battler": {
+      "slot": 72,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 72,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Parasect": {
+    "battler": {
+      "slot": 73,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 73,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Nidoking": {
+    "battler": {
+      "slot": 74,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 74,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Espeon": {
+    "battler": {
+      "slot": 75,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 75,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Metagross-Mega": {
+    "battler": {
+      "slot": 76,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 76,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Smeargle-Shiny": {
+    "battler": {
+      "slot": 77,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 77,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gastronite": {
+    "battler": {
+      "slot": 78,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 78,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gastronite-Shiny": {
+    "battler": {
+      "slot": 79,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 78,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gastrampa": {
+    "battler": {
+      "slot": 80,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 79,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Haxodon": {
+    "battler": {
+      "slot": 81,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 80,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gastro-o": {
+    "battler": {
+      "slot": 82,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 81,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gastreigon": {
+    "battler": {
+      "slot": 83,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 82,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Altaradon-Shiny": {
+    "battler": {
+      "slot": 84,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 83,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Venusaur-Epoch": {
+    "battler": {
+      "slot": 85,
+      "width": 93,
+      "height": 82
+    },
+    "icon": {
+      "slot": 84,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Gyarados-Epoch": {
+    "battler": {
+      "slot": 86,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 85,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Alakazam-Epoch": {
+    "battler": {
+      "slot": 87,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 86,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Kingler-Epoch": {
+    "battler": {
+      "slot": 88,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 87,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Rhydon": {
+    "battler": {
+      "slot": 89,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 88,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Rhyperior": {
+    "battler": {
+      "slot": 90,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 89,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Venusaur": {
+    "battler": {
+      "slot": 91,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 90,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Victreebel-Mega": {
+    "battler": {
+      "slot": 92,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 91,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Kingdra": {
+    "battler": {
+      "slot": 93,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 92,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Ledian": {
+    "battler": {
+      "slot": 94,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 93,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Butterfree": {
+    "battler": {
+      "slot": 95,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 94,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Scyther": {
+    "battler": {
+      "slot": 96,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 95,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Rapidash-Epoch": {
+    "battler": {
+      "slot": 97,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 96,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Chandelure": {
+    "battler": {
+      "slot": 98,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 97,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Dusknoir-Epoch": {
+    "battler": {
+      "slot": 99,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 98,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Smeargle": {
+    "battler": {
+      "slot": 100,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 77,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Typhlosion-Mega": {
+    "battler": {
+      "slot": 101,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 99,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Excadrill": {
+    "battler": {
+      "slot": 102,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 100,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Magneton": {
+    "battler": {
+      "slot": 103,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 101,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Ampharos": {
+    "battler": {
+      "slot": 104,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 102,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Umbreon": {
+    "battler": {
+      "slot": 105,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 103,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Soulstones/Charizard-MegaY": {
+    "battler": {
+      "slot": 106,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 104,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Zero/Blastoise-Mega": {
+    "battler": {
+      "slot": 107,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 105,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Parasect": {
+    "battler": {
+      "slot": 108,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 106,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Ampharos-Mega": {
+    "battler": {
+      "slot": 109,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 107,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Donphan": {
+    "battler": {
+      "slot": 110,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 108,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Venusaur": {
+    "battler": {
+      "slot": 111,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 109,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Megagross": {
+    "battler": {
+      "slot": 112,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 110,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Zero/Mewtwo": {
+    "battler": {
+      "slot": 113,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 111,
+      "width": 64,
+      "height": 60
+    }
+  },
+  "Blue & White/Vespyre": {
+    "battler": {
+      "slot": 114,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 112,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Blue & White/Zap Zap": {
+    "battler": {
+      "slot": 115,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 113,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Blue & White/Halakik": {
+    "battler": {
+      "slot": 116,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 114,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Blue & White/Fircoon": {
+    "battler": {
+      "slot": 117,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 115,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Blue & White/Snowbreak": {
+    "battler": {
+      "slot": 118,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 116,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Blue & White/Kabutops-IL": {
+    "battler": {
+      "slot": 119,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 117,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "The Camry Legend 2/Leafeon": {
+    "battler": {
+      "slot": 120,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 118,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "The Camry Legend 2/Kricketune": {
+    "battler": {
+      "slot": 121,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 119,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "The Camry Legend 2/Rapidash": {
+    "battler": {
+      "slot": 5,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 5,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "The Camry Legend 2/Mismagius": {
+    "battler": {
+      "slot": 122,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 120,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "The Camry Legend 2/Altaria": {
+    "battler": {
+      "slot": 123,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 121,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Round Edition/Golem": {
+    "battler": {
+      "slot": 124,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 122,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Round Edition/Magneton": {
+    "battler": {
+      "slot": 103,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 101,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Round Edition/Haunter-Shiny": {
+    "battler": {
+      "slot": 125,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 123,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Bushido/Sceptile": {
+    "icon": {
+      "slot": 124,
+      "width": 64,
+      "height": 64
+    },
+    "battler": {
+      "slot": 126,
+      "width": 96,
+      "height": 96
+    }
+  },
+  "Bushido/Slowbro-Galar": {
+    "battler": {
+      "slot": 127,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 125,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Bushido/Lucario": {
+    "battler": {
+      "slot": 128,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 126,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Bushido/Manaphy": {
+    "battler": {
+      "slot": 129,
+      "width": 96,
+      "height": 96
+    },
+    "icon": {
+      "slot": 127,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Salaslam": {
+    "battler": {
+      "slot": 130,
+      "width": 80,
+      "height": 84
+    },
+    "icon": {
+      "slot": 128,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Casspring": {
+    "battler": {
+      "slot": 131,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 129,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Werehide": {
+    "battler": {
+      "slot": 132,
+      "width": 83,
+      "height": 80
+    },
+    "icon": {
+      "slot": 130,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Horshush": {
+    "battler": {
+      "slot": 133,
+      "width": 80,
+      "height": 81
+    },
+    "icon": {
+      "slot": 131,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Rushot": {
+    "battler": {
+      "slot": 134,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 132,
+      "width": 64,
+      "height": 64
+    }
+  },
+  "Solar Light & Lunar Dark/Elestomp": {
+    "battler": {
+      "slot": 135,
+      "width": 80,
+      "height": 80
+    },
+    "icon": {
+      "slot": 133,
+      "width": 64,
       "height": 64
     }
   }
