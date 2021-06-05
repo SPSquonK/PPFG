@@ -463,7 +463,8 @@ const games = [
         version: "V1.0.1",
         date: "2021-04-17/18",
         pokemons: pokemons.SolarLight,
-        path: "SolarLight.rxdata"
+        path: "SolarLight.rxdata",
+		comments: "https://gist.github.com/SPSquonK/16971fd3e9f17d3e310b6e953aa64732"
     },
     {
         game: "Soulstones",
